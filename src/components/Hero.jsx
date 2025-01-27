@@ -2,7 +2,7 @@
 
 const Hero = ({ images = [] }) => {
     return (
-        <div className="relative z-10">
+        <div className="relative z-0">
             <div className="carousel w-full">
                 {images.map((image, index) => (
                     <div key={index} id={`slide${index}`} className="carousel-item relative w-full">

@@ -1,4 +1,5 @@
 'use client';
+'use client';
 import { useState } from "react";
 import Link from "next/link";
 
@@ -22,17 +23,11 @@ const Navbar = () => {
 
     return (
         <div className="navbar bg-base-100 shadow-md relative z-50">
-            {/* Hamburger Menu and Church Name for Mobile */}
-            <div className="navbar-start sm:hidden flex items-center justify-between w-full px-4">
-                <Link
-                    href="/"
-                    className="text-xl font-bold text-base-content hover:text-primary-focus"
-                >
-                    Regent Street Presbyterian
-                </Link>
+            {/* Mobile Navbar */}
+            <div className="navbar-start sm:hidden flex items-center w-full relative">
                 <button
                     onClick={toggleMenu}
-                    className="btn btn-square btn-ghost text-base-content"
+                    className="btn btn-square btn-ghost hover:bg-transparent"
                 >
                     {isMenuOpen ? (
                         // X Icon
@@ -40,7 +35,7 @@ const Navbar = () => {
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
-                            className="inline-block h-5 w-5"
+                            className="inline-block h-6 w-6 text-primary stroke-current"
                         >
                             <path
                                 strokeLinecap="round"
@@ -55,7 +50,7 @@ const Navbar = () => {
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
-                            className="inline-block h-5 w-5"
+                            className="inline-block h-6 w-6 text-primary stroke-current"
                         >
                             <path
                                 strokeLinecap="round"
@@ -66,18 +61,24 @@ const Navbar = () => {
                         </svg>
                     )}
                 </button>
+                <Link
+                    href="/"
+                    className="absolute left-1/2 transform -translate-x-1/2 text-xl font-bold text-base-content hover:text-primary-focus"
+                >
+                    Regent Street Presbyterian
+                </Link>
             </div>
 
             {/* Dropdown Menu for Mobile */}
             {isMenuOpen && (
-                <ul className="absolute top-full left-0 w-full bg-base-100 shadow-md p-4 text-base-content z-50">
+                <ul className="absolute top-full left-0 w-full bg-base-100 shadow-lg p-4 text-base-content z-50 space-y-4">
                     {/* What's On */}
-                    <li className="mb-2">
+                    <li>
                         <details open>
                             <summary className="font-bold cursor-pointer">What's On</summary>
-                            <ul className="ml-4">
+                            <ul className="space-y-2 pl-4">
                                 {navigationWhatsOn.map((nav) => (
-                                    <li key={nav.text} className="py-1">
+                                    <li key={nav.text}>
                                         <Link href={nav.link} className="hover:text-primary">
                                             {nav.text}
                                         </Link>
@@ -86,13 +87,14 @@ const Navbar = () => {
                             </ul>
                         </details>
                     </li>
+
                     {/* Community */}
                     <li>
                         <details>
                             <summary className="font-bold cursor-pointer">Community</summary>
-                            <ul className="ml-4">
+                            <ul className="space-y-2 pl-4">
                                 {navigationCommunity.map((nav) => (
-                                    <li key={nav.text} className="py-1">
+                                    <li key={nav.text}>
                                         <Link href={nav.link} className="hover:text-primary">
                                             {nav.text}
                                         </Link>
@@ -102,44 +104,43 @@ const Navbar = () => {
                         </details>
                     </li>
                 </ul>
+
             )}
 
             {/* Navbar for Larger Screens */}
-            <div className="hidden sm:flex w-full items-center justify-between px-4">
+            <div className="hidden sm:flex w-full items-center justify-center px-4">
                 <Link
                     href="/"
                     className="text-xl font-bold text-base-content hover:text-primary-focus"
                 >
                     Regent Street Presbyterian
                 </Link>
-                <div className="flex gap-4">
-                    {/* What's On Dropdown */}
-                    <div className="dropdown dropdown-hover">
-                        <div tabIndex={0} className="btn">
+                <ul className="menu menu-horizontal gap-4 text-base-content">
+                    <li className="dropdown dropdown-hover">
+                        <div tabIndex={0} className="btn btn-ghost">
                             What's On
                         </div>
-                        <ul className="dropdown-content menu bg-base-100 p-2 shadow-md rounded-box z-50">
+                        <ul className="dropdown-content bg-base-100 shadow-md p-2 rounded-box">
                             {navigationWhatsOn.map((nav) => (
                                 <li key={nav.text}>
                                     <Link href={nav.link}>{nav.text}</Link>
                                 </li>
                             ))}
                         </ul>
-                    </div>
-                    {/* Community Dropdown */}
-                    <div className="dropdown dropdown-hover">
-                        <div tabIndex={0} className="btn">
+                    </li>
+                    <li className="dropdown dropdown-hover">
+                        <div tabIndex={0} className="btn btn-ghost">
                             Community
                         </div>
-                        <ul className="dropdown-content menu bg-base-100 p-2 shadow-md rounded-box z-50">
+                        <ul className="dropdown-content bg-base-100 shadow-md p-2 rounded-box">
                             {navigationCommunity.map((nav) => (
                                 <li key={nav.text}>
                                     <Link href={nav.link}>{nav.text}</Link>
                                 </li>
                             ))}
                         </ul>
-                    </div>
-                </div>
+                    </li>
+                </ul>
             </div>
         </div>
     );
