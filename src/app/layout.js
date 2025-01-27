@@ -1,5 +1,5 @@
 import '@/styles/globals.css';
-import Navbar from '@/app/components/Navbar';
+import Navbar from '@/components/Navbar';
 
 export const metadata = {
 	title: 'Regent Street Church',
