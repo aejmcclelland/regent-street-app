@@ -1,4 +1,4 @@
-import '@/app/styles/globals.css';
+import '@/styles/globals.css';
 import Navbar from '@/app/components/Navbar';
 
 export const metadata = {
@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 	return (
-		<html lang='en'>
+		<html data-theme='winter' lang='en'>
 			<head>
 				<meta charSet='utf-8' />
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
