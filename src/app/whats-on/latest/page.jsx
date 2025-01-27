@@ -1,4 +1,4 @@
-export default function LatestNews() {
+export default function Latest() {
     return (
         <div>
             <h1>Latest News</h1>

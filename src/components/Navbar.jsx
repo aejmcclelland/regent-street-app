@@ -1,4 +1,4 @@
-'use client';
+
 'use client';
 import { useState } from "react";
 import Link from "next/link";
@@ -9,16 +9,17 @@ const Navbar = () => {
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
     const navigationWhatsOn = [
-        { link: "/sundays", text: "Sundays" },
-        { link: "/kids", text: "Kids" },
-        { link: "/youth", text: "Youth" },
-        { link: "/adult", text: "Adult" },
-        { link: "/events", text: "Events" },
+        { link: "/whats-on/sundays", text: "Sundays" },
+        { link: "/whats-on/kids", text: "Kids" },
+        { link: "/whats-on/youth", text: "Youth" },
+        { link: "/whats-on/adults", text: "Adults" },
+        { link: "/whats-on/latest", text: "Latest" },
+        { link: "/whats-on/giving", text: "Giving" },
     ];
 
     const navigationCommunity = [
-        { link: "/the-link", text: "The Link" },
-        { link: "/fields-of-life", text: "Fields of Life" },
+        { link: "/community/the-link", text: "The Link" },
+        { link: "/community/fields-of-life", text: "Fields of Life" },
     ];
 
     return (
@@ -75,7 +76,7 @@ const Navbar = () => {
                     {/* What's On */}
                     <li>
                         <details open>
-                            <summary className="font-bold cursor-pointer">What's On</summary>
+                            <summary className="font-bold cursor-pointer hover:text-primary">What's On</summary>
                             <ul className="space-y-2 pl-4">
                                 {navigationWhatsOn.map((nav) => (
                                     <li key={nav.text}>
@@ -89,9 +90,9 @@ const Navbar = () => {
                     </li>
 
                     {/* Community */}
-                    <li>
+                    <li className="mt-4"> {/* Ensure spacing between sections */}
                         <details>
-                            <summary className="font-bold cursor-pointer">Community</summary>
+                            <summary className="font-bold cursor-pointer hover:text-primary">Community</summary>
                             <ul className="space-y-2 pl-4">
                                 {navigationCommunity.map((nav) => (
                                     <li key={nav.text}>
@@ -104,7 +105,6 @@ const Navbar = () => {
                         </details>
                     </li>
                 </ul>
-
             )}
 
             {/* Navbar for Larger Screens */}
