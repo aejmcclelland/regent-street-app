@@ -1,4 +1,6 @@
 import Hero from '../components/Hero';
+import FindUs from '../components/FindUs';
+import Footer from '../components/Footer';
 
 export default function Home() {
 	const heroImages = [
@@ -44,6 +46,12 @@ export default function Home() {
 					We welcome everyone to join us in worship and community activities.
 				</p>
 			</section>
+
+			{/* Find Us */}
+			<FindUs />
+
+			{/* Footer */}
+			<Footer />
 		</div>
 	);
 }

@@ -18,7 +18,7 @@ const Hero = ({ images }) => {
                     <CldImage
                         src={img.src} // Cloudinary Public ID
                         width="800"
-                        height="400"
+                        height="250"
                         alt={img.alt}
                         crop="fill"
                         gravity="auto"
