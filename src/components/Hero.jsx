@@ -1,27 +1,35 @@
-'use client';
+"use client";
+import { CldImage } from "next-cloudinary";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import styles
 
-const Hero = ({ images = [] }) => {
+const Hero = ({ images }) => {
     return (
-        <div className="relative z-0">
-            <div className="carousel w-full">
-                {images.map((image, index) => (
-                    <div key={index} id={`slide${index}`} className="carousel-item relative w-full">
-                        <img src={image.src} alt={image.alt} className="w-full object-cover" />
-                        <div className="absolute bottom-0 left-0 right-0 bg-opacity-50 bg-black text-white p-4 text-center">
-                            <h2 className="text-xl font-bold">{image.caption}</h2>
-                        </div>
-                        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                            <a href={`#slide${index === 0 ? images.length - 1 : index - 1}`} className="btn btn-circle">
-                                ❮
-                            </a>
-                            <a href={`#slide${(index + 1) % images.length}`} className="btn btn-circle">
-                                ❯
-                            </a>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </div>
+        <Carousel
+            autoPlay
+            infiniteLoop
+            showThumbs={false}
+            showArrows={true}
+            showStatus={false}
+            interval={5000} // 5 seconds per slide
+        >
+            {images.map((img) => (
+                <div key={img.src} className="relative">
+                    <CldImage
+                        src={img.src} // Cloudinary Public ID
+                        width="800"
+                        height="400"
+                        alt={img.alt}
+                        crop="fill"
+                        gravity="auto"
+                        className="rounded-lg shadow-lg"
+                    />
+                    <p className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white px-4 py-2 rounded-md">
+                        {img.caption}
+                    </p>
+                </div>
+            ))}
+        </Carousel>
     );
 };
 

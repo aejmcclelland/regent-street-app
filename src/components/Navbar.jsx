@@ -1,12 +1,24 @@
-
 'use client';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+
+    //Close the mobile menu when screen size is resized to `sm` (>=640px)
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth >= 640) { // Tailwind's "sm" breakpoint is 640px
+                setIsMenuOpen(false);
+            }
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     const navigationWhatsOn = [
         { link: "/whats-on/sundays", text: "Sundays" },
@@ -72,15 +84,15 @@ const Navbar = () => {
 
             {/* Dropdown Menu for Mobile */}
             {isMenuOpen && (
-                <ul className="absolute top-full left-0 w-full bg-base-100 shadow-lg p-4 text-base-content z-50 space-y-4">
+                <ul className="absolute top-full left-0 w-full bg-base-100 shadow-lg p-4 text-base-content z-50 flex flex-col">
                     {/* What's On */}
-                    <li>
-                        <details open>
-                            <summary className="font-bold cursor-pointer hover:text-primary">What's On</summary>
-                            <ul className="space-y-2 pl-4">
+                    <li className="w-full">
+                        <details className="w-full">
+                            <summary className="font-bold cursor-pointer hover:text-primary w-full">What's On</summary>
+                            <ul className="space-y-2 pl-4 w-full">
                                 {navigationWhatsOn.map((nav) => (
-                                    <li key={nav.text}>
-                                        <Link href={nav.link} className="hover:text-primary">
+                                    <li key={nav.text} className="w-full">
+                                        <Link href={nav.link} className="hover:text-primary w-full block">
                                             {nav.text}
                                         </Link>
                                     </li>
@@ -89,14 +101,14 @@ const Navbar = () => {
                         </details>
                     </li>
 
-                    {/* Community */}
-                    <li className="mt-4"> {/* Ensure spacing between sections */}
-                        <details>
-                            <summary className="font-bold cursor-pointer hover:text-primary">Community</summary>
-                            <ul className="space-y-2 pl-4">
+                    {/* Ensure Proper Spacing Between Sections */}
+                    <li className="w-full mt-4">
+                        <details className="w-full">
+                            <summary className="font-bold cursor-pointer hover:text-primary w-full">Community</summary>
+                            <ul className="space-y-2 pl-4 w-full">
                                 {navigationCommunity.map((nav) => (
-                                    <li key={nav.text}>
-                                        <Link href={nav.link} className="hover:text-primary">
+                                    <li key={nav.text} className="w-full">
+                                        <Link href={nav.link} className="hover:text-primary w-full block">
                                             {nav.text}
                                         </Link>
                                     </li>
