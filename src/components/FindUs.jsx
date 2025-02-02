@@ -12,8 +12,8 @@ const FindUs = () => {
                 <div>
                     <h2 className="text-2xl font-bold text-primary">Find Us</h2>
                     <p className="text-gray-700 mt-4">
-                        Regent Street Presbyterian Church is situated on Regent Street in Newtownards,
-                        with car parking available to the right side and rear of the church.
+                        Regent Street Presbyterian Church is situated on Regent Street in Newtownards.
+                        Car parking is available at the rear of the church building – drive in through the gates and proceed down the right had side.
                     </p>
                 </div>
 

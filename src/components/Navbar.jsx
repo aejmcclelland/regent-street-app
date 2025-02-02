@@ -35,6 +35,13 @@ const Navbar = () => {
         { link: "/community/fields-of-life", text: "Fields of Life" },
     ];
 
+    const navigationWhoWeAre = [
+        { link: "/who-we-are/vision", text: "Our Vision" },
+        { link: "/who-we-are/team", text: "Our Team" },
+        { link: "/who-we-are/our-history", text: "Our History" },
+        { link: "/who-we-are/beliefs", text: "Our Beliefs" },
+    ]
+
     return (
         <div className="navbar bg-base-100 shadow-md relative z-50">
             <div className="container mx-auto flex items-center justify-between px-4">
@@ -59,6 +66,7 @@ const Navbar = () => {
 
                 {/* Center Links */}
                 <ul className="hidden sm:flex menu menu-horizontal gap-4 text-base-content">
+                    <Dropdown title="Who We Are" items={navigationWhoWeAre} />
                     <Dropdown title="What's On" items={navigationWhatsOn} />
                     <Dropdown title="Community" items={navigationCommunity} />
                 </ul>
@@ -108,6 +116,7 @@ const Navbar = () => {
                 toggleMenu={toggleMenu}
                 navigationWhatsOn={navigationWhatsOn}
                 navigationCommunity={navigationCommunity}
+                navigationWhoWeAre={navigationWhoWeAre}
             />
         </div>
     );

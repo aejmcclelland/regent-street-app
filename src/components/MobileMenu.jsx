@@ -1,7 +1,7 @@
 'use client';
 import Link from "next/link";
 
-const MobileMenu = ({ isOpen, navigationWhatsOn, navigationCommunity }) => {
+const MobileMenu = ({ isOpen, navigationWhatsOn, navigationCommunity, navigationWhoWeAre }) => {
     if (!isOpen) return null; // Only render the menu when it's open
 
     return (
@@ -23,7 +23,23 @@ const MobileMenu = ({ isOpen, navigationWhatsOn, navigationCommunity }) => {
                     </ul>
                 </details>
             </li>
-
+            {/* Community Section */}
+            <li className="w-full mt-4">
+                <details className="w-full">
+                    <summary className="font-bold cursor-pointer hover:text-primary w-full">
+                        Who We Are
+                    </summary>
+                    <ul className="space-y-2 pl-4 w-full">
+                        {navigationWhoWeAre.map((nav) => (
+                            <li key={nav.text} className="w-full">
+                                <Link href={nav.link} className="hover:text-primary w-full block">
+                                    {nav.text}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </details>
+            </li>
             {/* Community Section */}
             <li className="w-full mt-4">
                 <details className="w-full">
