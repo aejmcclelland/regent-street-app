@@ -4,6 +4,11 @@ import Link from "next/link";
 const MobileMenu = ({ isOpen, navigationWhatsOn, navigationCommunity, navigationWhoWeAre }) => {
     if (!isOpen) return null; // Only render the menu when it's open
 
+    // Function to close the menu when a link is clicked
+    const closeMenu = () => {
+        toggleMenu(false); // Ensure the menu closes
+    };
+
     return (
         <ul className="absolute top-full left-0 w-full bg-base-100 shadow-lg p-4 text-base-content z-50 flex flex-col">
             {/* What's On Section */}
@@ -15,7 +20,9 @@ const MobileMenu = ({ isOpen, navigationWhatsOn, navigationCommunity, navigation
                     <ul className="space-y-2 pl-4 w-full">
                         {navigationWhatsOn.map((nav) => (
                             <li key={nav.text} className="w-full">
-                                <Link href={nav.link} className="hover:text-primary w-full block">
+                                <Link href={nav.link}
+                                    onClick={closeMenu}
+                                    className="hover:text-primary w-full block">
                                     {nav.text}
                                 </Link>
                             </li>
@@ -32,7 +39,9 @@ const MobileMenu = ({ isOpen, navigationWhatsOn, navigationCommunity, navigation
                     <ul className="space-y-2 pl-4 w-full">
                         {navigationWhoWeAre.map((nav) => (
                             <li key={nav.text} className="w-full">
-                                <Link href={nav.link} className="hover:text-primary w-full block">
+                                <Link href={nav.link}
+                                    onClick={closeMenu}
+                                    className="hover:text-primary w-full block">
                                     {nav.text}
                                 </Link>
                             </li>

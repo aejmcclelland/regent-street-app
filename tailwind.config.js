@@ -6,6 +6,6 @@ module.exports = {
 	},
 	plugins: [require('@tailwindcss/typography'), require('daisyui')],
 	daisyui: {
-		themes: ['light', 'dark', 'synthwave', 'sunset', 'winter'], // Add themes here
+		themes: ['light', 'dark', 'synthwave', 'cupcake', 'winter'], // Add themes here
 	},
 };
