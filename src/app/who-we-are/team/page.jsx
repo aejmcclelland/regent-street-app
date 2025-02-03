@@ -1,3 +1,4 @@
+import Banner from "@/components/Banner";
 import Image from "next/image";
 
 const teamMembers = [
@@ -47,24 +48,14 @@ const teamMembers = [
 export default function OurTeam() {
     return (
         <div className="w-full">
-            {/* Banner Section with Overlay */}
-            <div className="relative w-full h-[300px]">
-                {/* Full-Width Church Image */}
-                <Image
-                    src="/images/church-banner.jpg"
-                    alt="Regent Street Presbyterian Church"
-                    layout="fill"
-                    objectFit="cover"
-                    className="w-full"
-                />
-
-                {/* Title Overlay in Bottom Right */}
-                <div className="absolute bottom-5 left-5">
-                    <h1 className="text-8xl sm:text-9xl font-bold text-info drop-shadow-lg">
-                        Who's Who?
-                    </h1>
-                </div>
-            </div>
+            {/* Banner Section */}
+            <Banner
+                publicId="regentStreetChurch/church-banner.png"
+                alt="Who's Who?"
+                title="Who's Who?"
+                textPosition="bottomRight" // ✅ Text in bottom
+                fontColour="one" // ✅ Text in accent color
+            />
 
             {/* Team Members Section */}
             <section className="bg-base-200 py-10">
