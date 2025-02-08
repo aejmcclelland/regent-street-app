@@ -1,9 +1,10 @@
-'use client';
+"use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Dropdown from "../components/Dropdown";
 import MobileMenu from "../components/MobileMenu";
 import Image from "next/image";
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -40,7 +41,7 @@ export default function Navbar() {
         { link: "/who-we-are/team", text: "Our Team" },
         { link: "/who-we-are/our-history", text: "Our History" },
         { link: "/who-we-are/beliefs", text: "Our Beliefs" },
-    ]
+    ];
 
     return (
         <div className="navbar bg-base-100 shadow-md relative z-50">
@@ -49,13 +50,11 @@ export default function Navbar() {
                 <div className="flex items-center space-x-2">
                     <Image
                         src="/images/rs-logo.png"
-                        // Path relative to the `public` folder
                         alt="Regent Street Presbyterian Logo"
-                        width={32} // Adjust width to your needs
-                        height={32} // Adjust height to your needs
-                        className="h-8 w-8" // Tailwind classes for consistent sizing
+                        width={32}
+                        height={32}
+                        className="h-8 w-8"
                     />
-
                     <Link
                         href="/"
                         className="text-xl font-bold text-base-content hover:text-primary-focus"
@@ -69,10 +68,49 @@ export default function Navbar() {
                     <Dropdown title="Who We Are" items={navigationWhoWeAre} />
                     <Dropdown title="What's On" items={navigationWhatsOn} />
                     <Dropdown title="Community" items={navigationCommunity} />
+
+                    {/* Social Media Icons (DESKTOP) */}
+                    <div className="flex items-center space-x-4 ml-6">
+                        <a
+                            href="https://www.facebook.com/yourpage"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-600 hover:text-primary transition"
+                        >
+                            <FaFacebookF className="w-6 h-6" />
+                        </a>
+                        <a
+                            href="https://www.instagram.com/yourprofile"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-600 hover:text-primary transition"
+                        >
+                            <FaInstagram className="w-6 h-6" />
+                        </a>
+                    </div>
                 </ul>
 
-                {/* Mobile Menu Button */}
-                <div className="sm:hidden flex items-center">
+                {/* Mobile Menu Button & Social Icons (Mobile) */}
+                <div className="sm:hidden flex items-center space-x-4">
+                    {/* Social Media Icons (MOBILE) */}
+                    <a
+                        href="https://www.facebook.com/yourpage"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-600 hover:text-primary transition"
+                    >
+                        <FaFacebookF className="w-6 h-6" />
+                    </a>
+                    <a
+                        href="https://www.instagram.com/yourprofile"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-600 hover:text-primary transition"
+                    >
+                        <FaInstagram className="w-6 h-6" />
+                    </a>
+
+                    {/* Close Menu X Button (Moved to the Right) */}
                     <button
                         onClick={toggleMenu}
                         className="btn btn-square btn-ghost hover:bg-transparent"
@@ -111,13 +149,17 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Menu */}
-            <MobileMenu
-                isOpen={isMenuOpen}
-                toggleMenu={toggleMenu}
-                navigationWhatsOn={navigationWhatsOn}
-                navigationCommunity={navigationCommunity}
-                navigationWhoWeAre={navigationWhoWeAre}
-            />
+            {isMenuOpen && (
+                <div className="sm:hidden bg-base-100 shadow-md p-4">
+                    <MobileMenu
+                        isOpen={isMenuOpen}
+                        toggleMenu={toggleMenu}
+                        navigationWhatsOn={navigationWhatsOn}
+                        navigationCommunity={navigationCommunity}
+                        navigationWhoWeAre={navigationWhoWeAre}
+                    />
+                </div>
+            )}
         </div>
     );
 };

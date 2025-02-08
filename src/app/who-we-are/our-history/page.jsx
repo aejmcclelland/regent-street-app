@@ -1,6 +1,6 @@
 import Banner from "@/components/Banner";
 
-export default function OurHistory() {
+export default async function OurHistory() {
     return (
         <div className="w-full">
             {/* Banner Section */}

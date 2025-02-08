@@ -45,7 +45,7 @@ const teamMembers = [
     },
 ];
 
-export default function OurTeam() {
+export default async function OurTeam() {
     return (
         <div className="w-full">
             {/* Banner Section */}

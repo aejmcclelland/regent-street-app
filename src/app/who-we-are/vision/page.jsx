@@ -1,6 +1,6 @@
 import Banner from '@/components/Banner';
 
-export default function Vision() {
+export default async function Vision() {
     return (
         <div className="w-full">
             {/* Banner Section with Dynamic Title */}
