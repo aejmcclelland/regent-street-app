@@ -22,7 +22,7 @@ const Hero = ({ images }) => {
                         alt={img.alt}
                         crop="fill"
                         gravity="auto"
-                        className="rounded-lg shadow-lg"
+                        className="shadow-lg"
                     />
                     <p className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white px-4 py-2 rounded-md">
                         {img.caption}

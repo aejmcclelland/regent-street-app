@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -7,7 +7,7 @@ const Dropdown = ({ title, items }) => {
 
     return (
         <div
-            className="relative group"
+            className="relative"
             onMouseEnter={() => setIsOpen(true)}
             onMouseLeave={() => setIsOpen(false)}
         >
@@ -18,13 +18,14 @@ const Dropdown = ({ title, items }) => {
             >
                 {title}
             </div>
-            <div className="absolute left-0 w-full h-[10px] bg-transparent pointer-events-auto"></div>
+
+            {/* Transparent Bridge Above Dropdown (Prevents Closing Too Soon) */}
+            {isOpen && <div className="absolute left-0 top-full w-full h-[16px] bg-transparent"></div>}
 
             {/* Dropdown Menu */}
             {isOpen && (
                 <ul
-                    className="absolute left-0 top-[54px] w-44 bg-base-100 shadow-md p-2 border border-gray-300 rounded-none z-50"
-                    style={{ marginTop: "-2px" }} // Prevents the gap issue
+                    className="absolute left-0 top-[calc(100%+16px)] w-44 bg-base-100 shadow-md p-2 border border-gray-300 rounded-none z-50"
                 >
                     {items.map((item) => (
                         <li key={item.text}>
