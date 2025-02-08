@@ -5,7 +5,7 @@ import Dropdown from "../components/Dropdown";
 import MobileMenu from "../components/MobileMenu";
 import Image from "next/image";
 
-const Navbar = () => {
+export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -121,5 +121,3 @@ const Navbar = () => {
         </div>
     );
 };
-
-export default Navbar;

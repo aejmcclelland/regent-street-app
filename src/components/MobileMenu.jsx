@@ -1,7 +1,7 @@
 'use client';
 import Link from "next/link";
 
-const MobileMenu = ({ isOpen, navigationWhatsOn, navigationCommunity, navigationWhoWeAre }) => {
+export default function MobileMenu({ isOpen, navigationWhatsOn, navigationCommunity, navigationWhoWeAre }) {
     if (!isOpen) return null; // Only render the menu when it's open
 
     // Function to close the menu when a link is clicked
@@ -70,5 +70,3 @@ const MobileMenu = ({ isOpen, navigationWhatsOn, navigationCommunity, navigation
         </ul>
     );
 };
-
-export default MobileMenu;

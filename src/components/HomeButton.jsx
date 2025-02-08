@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-const HomeButton = () => {
+export default function HomeButton() {
     return (
         <div className="my-4">
             <Link
@@ -28,5 +28,3 @@ const HomeButton = () => {
         </div>
     );
 };
-
-export default HomeButton;

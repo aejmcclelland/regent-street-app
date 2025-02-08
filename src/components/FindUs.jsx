@@ -1,9 +1,6 @@
-
-
-
 "use client";
 
-const FindUs = () => {
+export default function FindUs() {
     return (
         <section className="bg-base-100 py-12 px-4">
             <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -34,5 +31,3 @@ const FindUs = () => {
         </section >
     );
 };
-
-export default FindUs;

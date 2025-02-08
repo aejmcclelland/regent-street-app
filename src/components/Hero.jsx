@@ -3,7 +3,7 @@ import { CldImage } from "next-cloudinary";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import styles
 
-const Hero = ({ images }) => {
+export default function Hero({ images }) {
     return (
         <Carousel
             autoPlay
@@ -32,5 +32,3 @@ const Hero = ({ images }) => {
         </Carousel>
     );
 };
-
-export default Hero;

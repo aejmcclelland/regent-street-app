@@ -27,8 +27,8 @@ export default function Home() {
 		<div>
 			<Hero images={heroImages} />
 			<Sundays />
-			<Welcome /> {/* ✅ New Component */}
-			<About /> {/* ✅ New Component */}
+			<Welcome />
+			<About />
 			<FindUs />
 		</div>
 	);
