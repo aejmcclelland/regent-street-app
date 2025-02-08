@@ -48,7 +48,7 @@ const Navbar = () => {
                 {/* Left Side: Title and Logo */}
                 <div className="flex items-center space-x-2">
                     <Image
-                        src="/images/logo.png"
+                        src="/images/rs-logo.png"
                         // Path relative to the `public` folder
                         alt="Regent Street Presbyterian Logo"
                         width={32} // Adjust width to your needs
