@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Default font */
+html {
+   font-family: var(--font-poppins);
+}
+
+
+/* Headings use a different font */
+h1, h2, h3 {
+    font-weight: 700;
+}
 :root {
   --background: #ffffff; /* Default to white */
   --foreground: #171717;

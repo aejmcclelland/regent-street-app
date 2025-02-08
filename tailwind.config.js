@@ -7,8 +7,16 @@ module.exports = {
 		'./src/**/*.{js,ts,jsx,tsx}',
 	],
 	theme: {
-		extend: {},
+		extend: {
+			fontFamily: {
+				poppins: ['var(--font-poppins)', 'serif'],
+			},
+			fontWeight: {
+				poppinsBold: '700', // ✅ Custom bold class for Poppins
+			},
+		},
 	},
+
 	plugins: [require('@tailwindcss/typography'), require('daisyui')],
 	daisyui: {
 		themes: ['light', 'dark', 'synthwave', 'sunset', 'cupcake', 'winter'], // Add themes here

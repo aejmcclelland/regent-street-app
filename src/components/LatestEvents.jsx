@@ -2,7 +2,7 @@
 
 export default function LatestEvents() {
     return (
-        <section className="bg-secondary-content py-12 px-6 text-white">
+        <section className="bg-accent py-12 px-6 text-white">
             <div className="container mx-auto max-w-4xl">
                 <h2 className="text-4xl font-bold text-white mb-6">Latest Events</h2>
 

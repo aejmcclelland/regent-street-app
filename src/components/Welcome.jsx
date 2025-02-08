@@ -2,9 +2,9 @@
 
 export default function Welcome() {
     return (
-        <section className="bg-base-200 py-12 px-6 text-center">
+        <section className="bg-base-300 py-12 px-6 text-center">
             <div className="container mx-auto max-w-4xl">
-                <h1 className="text-4xl font-bold text-primary mb-4">
+                <h1 className="text-4xl font-bold font-liter text-primary mb-4">
                     Welcome to Regent Street Presbyterian Church
                 </h1>
                 <p className="text-lg text-gray-700 leading-relaxed">
@@ -13,7 +13,7 @@ export default function Welcome() {
                 </p>
                 <a
                     href="/about"
-                    className="mt-6 inline-block px-6 py-3 bg-primary text-white font-semibold rounded-lg shadow-md hover:bg-primary-focus transition"
+                    className="mt-6 inline-block px-6 py-3 bg-secondary text-white font-semibold rounded-lg shadow-md hover:bg-primary-focus transition"
                 >
                     Learn More
                 </a>

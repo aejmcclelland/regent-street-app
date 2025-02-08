@@ -2,7 +2,7 @@
 
 export default function About() {
     return (
-        <section className="bg-base-100 py-12 px-6">
+        <section className="bg-base-200 py-12 px-6">
             <div className="container mx-auto max-w-3xl text-center">
                 <h2 className="text-3xl font-semibold text-primary mb-4">About Our Church</h2>
                 <p className="text-lg text-gray-700 leading-relaxed">

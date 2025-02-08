@@ -1,6 +1,15 @@
 import '@/styles/globals.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { Poppins } from 'next/font/google';
+
+const poppins = Poppins({
+	weight: ['400', '600', '700', '900'],
+	subsets: ['latin'],
+	style: ['normal', 'italic'],
+	display: 'swap',
+	variable: '--font-poppins',
+});
 
 export const metadata = {
 	title: 'Regent Street Church',
@@ -9,7 +18,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 	return (
-		<html data-theme='cupcake' lang='en'>
+		<html lang='en' data-theme='cupcake' className={`${poppins.variable}`}>
 			<body className='antialiased'>
 				<Navbar />
 				<main>{children}</main>
