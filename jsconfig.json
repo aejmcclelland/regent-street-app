@@ -1,7 +1,19 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@payload-config": [
+        "./src/payload.config.ts"
+      ],
+      "@/*": [
+        "./src/*"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "@pages/*": [
+        "app/(my-app)/pages/*"
+      ]
     }
-  }
+  },
 }

@@ -1,8 +1,8 @@
-import Hero from "../components/Hero";
-import Sundays from "../components/Sundays";
-import FindUs from "../components/FindUs";
-import Welcome from "../components/Welcome";
-import About from "../components/About";
+import Hero from "../../components/Hero";
+import Sundays from "../../components/Sundays";
+import FindUs from "../../components/FindUs";
+import Welcome from "../../components/Welcome";
+import About from "../../components/About";
 
 export default function Home() {
 	const heroImages = [
