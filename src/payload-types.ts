@@ -73,6 +73,7 @@ export interface Config {
     youth: Youth;
     'our-history': OurHistory;
     team: Team;
+    test: Test;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -86,6 +87,7 @@ export interface Config {
     youth: YouthSelect<false> | YouthSelect<true>;
     'our-history': OurHistorySelect<false> | OurHistorySelect<true>;
     team: TeamSelect<false> | TeamSelect<true>;
+    test: TestSelect<false> | TestSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -232,6 +234,10 @@ export interface WhoWeAre {
 export interface Youth {
   id: string;
   title: string;
+  /**
+   * Leave empty to auto-generate from title
+   */
+  slug: string;
   content?: {
     root: {
       type: string;
@@ -300,6 +306,16 @@ export interface Team {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "test".
+ */
+export interface Test {
+  id: string;
+  title: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -332,6 +348,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'team';
         value: string | Team;
+      } | null)
+    | ({
+        relationTo: 'test';
+        value: string | Test;
       } | null);
   globalSlug?: string | null;
   user:
@@ -452,6 +472,7 @@ export interface WhoWeAreSelect<T extends boolean = true> {
  */
 export interface YouthSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   content?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -485,6 +506,15 @@ export interface TeamSelect<T extends boolean = true> {
   image?: T;
   bio?: T;
   email?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "test_select".
+ */
+export interface TestSelect<T extends boolean = true> {
+  title?: T;
   updatedAt?: T;
   createdAt?: T;
 }
