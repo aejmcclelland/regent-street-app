@@ -9,9 +9,12 @@ import Admins from './collections/Admins';
 import Users from './collections/Users';
 import Media from './collections/Media';
 import WhoWeAre from './collections/WhoWeAre';
-import Youth from './collections/Youth';
+import WhatsOn from './globals/whatsOn';
+import Sundays from './collections/Sundays';
 import OurHistory from './collections/OurHistory';
 import Team from './collections/Team';
+import Youth from './collections/Youth';
+import Kids from './collections/Kids';
 
 import Test from './collections/Test';
 
@@ -25,7 +28,19 @@ export default buildConfig({
 			baseDir: path.resolve(dirname),
 		},
 	},
-	collections: [Admins, Users, Media, WhoWeAre, Youth, OurHistory, Team, Test],
+	collections: [
+		Admins,
+		Users,
+		Media,
+		WhoWeAre,
+		Sundays,
+		OurHistory,
+		Team,
+		Test,
+		Youth,
+		Kids,
+	],
+	globals: [WhatsOn],
 	editor: lexicalEditor(),
 	secret: process.env.PAYLOAD_SECRET || '',
 	typescript: {

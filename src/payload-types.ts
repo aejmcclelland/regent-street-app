@@ -70,10 +70,12 @@ export interface Config {
     users: User;
     media: Media;
     'who-we-are': WhoWeAre;
-    youth: Youth;
+    sundays: Sunday;
     'our-history': OurHistory;
     team: Team;
     test: Test;
+    youth: Youth;
+    kids: Kid;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -84,10 +86,12 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'who-we-are': WhoWeAreSelect<false> | WhoWeAreSelect<true>;
-    youth: YouthSelect<false> | YouthSelect<true>;
+    sundays: SundaysSelect<false> | SundaysSelect<true>;
     'our-history': OurHistorySelect<false> | OurHistorySelect<true>;
     team: TeamSelect<false> | TeamSelect<true>;
     test: TestSelect<false> | TestSelect<true>;
+    youth: YouthSelect<false> | YouthSelect<true>;
+    kids: KidsSelect<false> | KidsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -95,8 +99,12 @@ export interface Config {
   db: {
     defaultIDType: string;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'whats-on': WhatsOn;
+  };
+  globalsSelect: {
+    'whats-on': WhatsOnSelect<false> | WhatsOnSelect<true>;
+  };
   locale: null;
   user:
     | (Admin & {
@@ -229,16 +237,13 @@ export interface WhoWeAre {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "youth".
+ * via the `definition` "sundays".
  */
-export interface Youth {
+export interface Sunday {
   id: string;
   title: string;
-  /**
-   * Leave empty to auto-generate from title
-   */
-  slug: string;
-  content?: {
+  date: string;
+  description?: {
     root: {
       type: string;
       children: {
@@ -316,6 +321,58 @@ export interface Test {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "youth".
+ */
+export interface Youth {
+  id: string;
+  title: string;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  date?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "kids".
+ */
+export interface Kid {
+  id: string;
+  title: string;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  date?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -338,8 +395,8 @@ export interface PayloadLockedDocument {
         value: string | WhoWeAre;
       } | null)
     | ({
-        relationTo: 'youth';
-        value: string | Youth;
+        relationTo: 'sundays';
+        value: string | Sunday;
       } | null)
     | ({
         relationTo: 'our-history';
@@ -352,6 +409,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'test';
         value: string | Test;
+      } | null)
+    | ({
+        relationTo: 'youth';
+        value: string | Youth;
+      } | null)
+    | ({
+        relationTo: 'kids';
+        value: string | Kid;
       } | null);
   globalSlug?: string | null;
   user:
@@ -468,12 +533,12 @@ export interface WhoWeAreSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "youth_select".
+ * via the `definition` "sundays_select".
  */
-export interface YouthSelect<T extends boolean = true> {
+export interface SundaysSelect<T extends boolean = true> {
   title?: T;
-  slug?: T;
-  content?: T;
+  date?: T;
+  description?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -520,6 +585,28 @@ export interface TestSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "youth_select".
+ */
+export interface YouthSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  date?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "kids_select".
+ */
+export interface KidsSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  date?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
@@ -549,6 +636,48 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "whats-on".
+ */
+export interface WhatsOn {
+  id: string;
+  heroBanner?: (string | null) | Media;
+  introText: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  youthContent?: (string | null) | Youth;
+  sundaysContent?: (string | null) | Sunday;
+  kidsContent?: (string | null) | Kid;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "whats-on_select".
+ */
+export interface WhatsOnSelect<T extends boolean = true> {
+  heroBanner?: T;
+  introText?: T;
+  youthContent?: T;
+  sundaysContent?: T;
+  kidsContent?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

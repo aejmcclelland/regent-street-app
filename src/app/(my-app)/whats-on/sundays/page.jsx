@@ -1,16 +1,17 @@
 import Banner from "@components/Banner";
 import { getCollectionContent } from "lib/payload";
 
-// ✅ Function to recursively process Lexical nodes into JSX
+// ✅ Function to recursively process Lexical nodes and return JSX
 const renderLexicalContent = (node, key) => {
     if (!node) return null;
 
     switch (node.type) {
-        case "heading":
-            return <h2 key={key} className="text-2xl font-bold mb-2">{node.children?.map((child, i) => renderLexicalContent(child, i))}</h2>;
-
         case "paragraph":
-            return <p key={key} className="mb-4">{node.children?.map((child, i) => renderLexicalContent(child, i))}</p>;
+            return (
+                <p key={key} className="mb-4">
+                    {node.children?.map((child, i) => renderLexicalContent(child, i))}
+                </p>
+            );
 
         case "text":
             return node.format === 1 ? <strong key={key}>{node.text}</strong> : node.text;
@@ -29,21 +30,28 @@ const renderLexicalContent = (node, key) => {
         case "listitem":
             return <li key={key}>{node.children?.map((child, i) => renderLexicalContent(child, i))}</li>;
 
+        case "quote":
+            return (
+                <blockquote key={key} className="border-l-4 border-gray-500 pl-4 italic text-gray-700">
+                    {node.children?.map((child, i) => renderLexicalContent(child, i))}
+                </blockquote>
+            );
+
         default:
             return node.children?.map((child, i) => renderLexicalContent(child, i));
     }
 };
 
-export default async function Youth() {
-    const youthContent = await getCollectionContent('youth');
+export default async function Sundays() {
+    const sundaysContent = await getCollectionContent('sundays');
 
     return (
         <div className="w-full">
             {/* ✅ Banner Section */}
             <Banner
-                publicId="regentStreetChurch/praise_sample.jpg" // ✅ Background image
-                alt="Youth Ministry"
-                title={youthContent?.title || "Youth Ministry"} // ✅ Dynamically fetch the title
+                publicId="regentStreetChurch/praise_sample.jpg"
+                alt="Sunday Services"
+                title={sundaysContent?.title || "Sunday Services"}
                 textPosition="bottomLeft"
                 fontColour="two"
             />
@@ -51,14 +59,14 @@ export default async function Youth() {
             {/* ✅ Content Section */}
             <section className="bg-base-200 py-10">
                 <div className="container mx-auto px-4">
-                    {/* <h2 className="text-4xl font-bold text-center text-primary mb-6">
-                        {youthContent?.title || "Youth Ministry"}
-                    </h2> */}
+                    <h2 className="text-4xl font-bold text-center text-primary mb-6">
+                        {sundaysContent?.title || "Sunday Services"}
+                    </h2>
 
                     {/* ✅ Render Formatted Content */}
                     <div className="text-lg text-gray-700 space-y-4">
-                        {youthContent?.description?.root?.children?.length > 0 ? (
-                            youthContent.description.root.children.map((child, index) =>
+                        {sundaysContent?.description?.root?.children?.length > 0 ? (
+                            sundaysContent.description.root.children.map((child, index) =>
                                 renderLexicalContent(child, index)
                             )
                         ) : (

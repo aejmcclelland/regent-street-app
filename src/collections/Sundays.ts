@@ -1,14 +1,14 @@
 import { CollectionConfig } from 'payload';
 
-export const Youth: CollectionConfig = {
-	slug: 'youth',
-	labels: { singular: 'Youth', plural: 'Youth Events' },
+export const Sundays: CollectionConfig = {
+	slug: 'sundays',
+	labels: { singular: 'Sunday', plural: 'Sundays' },
 	access: { read: () => true, update: () => true },
 	fields: [
 		{ name: 'title', type: 'text', required: true },
+		{ name: 'date', type: 'date', required: true },
 		{ name: 'description', type: 'richText' },
-		{ name: 'date', type: 'date' },
 	],
 };
 
-export default Youth;
+export default Sundays;
