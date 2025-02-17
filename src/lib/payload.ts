@@ -3,17 +3,25 @@
  * @param collectionSlug - The collection slug to fetch content from
  * @param limit - Number of documents to fetch (default 1)
  */
+interface Document {
+	id: string;
+	title?: string;
+	description?: { root?: any } | null; // ✅ Allow `null`
+}
+
+interface CollectionResponse {
+	docs: Document[];
+}
+
 export async function getCollectionContent(
 	collectionSlug: string,
-	limit: number = 1
-) {
+	limit: number = 10
+): Promise<Document[]> {
 	try {
 		console.log('Fetching collection:', collectionSlug);
 
-		//API URL for collections
-		const apiUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/api/${collectionSlug}?limit=${limit}&depth=1`;
+		const apiUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/api/${collectionSlug}?limit=${limit}&depth=2&sort=positionOrder`;
 
-		// Fetch data from Payload REST API
 		const req = await fetch(apiUrl, { cache: 'no-store' });
 
 		if (!req.ok) {
@@ -22,16 +30,19 @@ export async function getCollectionContent(
 			);
 		}
 
-		const data = await req.json();
-		console.log('Fetched data:', data.docs);
+		const data: CollectionResponse = await req.json();
 
-		return data?.docs?.length > 0 ? data.docs[0] : null;
+		return (
+			data?.docs.map((doc: Document) => ({
+				...doc,
+				description: doc.description?.root ? doc.description : null, // ✅ Ensure null safety
+			})) || []
+		);
 	} catch (error) {
 		console.error(`Error fetching ${collectionSlug} content:`, error);
-		return null;
+		return [];
 	}
 }
-
 /**
  * Fetch content from a specific Payload CMS global singleton
  * @param globalSlug - The global slug to fetch content from

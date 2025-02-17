@@ -11,6 +11,8 @@
   "dependencies": {
     "@payloadcms/db-mongodb": "^3.23.0",
     "@payloadcms/next": "^3.23.0",
+    "@payloadcms/payload-cloud": "^3.23.0",
+    "@payloadcms/plugin-cloud-storage": "^3.23.0",
     "@payloadcms/richtext-lexical": "^3.23.0",
     "autoprefixer": "^10.4.20",
     "daisyui": "^4.12.23",

@@ -197,18 +197,16 @@ export interface User {
  */
 export interface Media {
   id: string;
-  alt: string;
+  /**
+   * Paste the Cloudinary URL for this image.
+   */
+  imageUrl: string;
+  /**
+   * Alternative text for accessibility.
+   */
+  alt?: string | null;
   updatedAt: string;
   createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -216,8 +214,10 @@ export interface Media {
  */
 export interface WhoWeAre {
   id: string;
-  title: string;
-  description?: {
+  name: string;
+  role: string;
+  image?: (string | null) | Media;
+  bio: {
     root: {
       type: string;
       children: {
@@ -231,7 +231,11 @@ export interface WhoWeAre {
       version: number;
     };
     [k: string]: unknown;
-  } | null;
+  };
+  /**
+   * Optional: Display email for contact purposes
+   */
+  email?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -289,8 +293,8 @@ export interface Team {
   id: string;
   name: string;
   role: string;
-  image?: (string | null) | Media;
-  bio: {
+  email?: string | null;
+  bio?: {
     root: {
       type: string;
       children: {
@@ -304,8 +308,15 @@ export interface Team {
       version: number;
     };
     [k: string]: unknown;
-  };
-  email?: string | null;
+  } | null;
+  /**
+   * Lower numbers appear first.
+   */
+  positionOrder: number;
+  /**
+   * Select a profile image from the Media library
+   */
+  image?: (string | null) | Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -508,26 +519,21 @@ export interface UsersSelect<T extends boolean = true> {
  * via the `definition` "media_select".
  */
 export interface MediaSelect<T extends boolean = true> {
+  imageUrl?: T;
   alt?: T;
   updatedAt?: T;
   createdAt?: T;
-  url?: T;
-  thumbnailURL?: T;
-  filename?: T;
-  mimeType?: T;
-  filesize?: T;
-  width?: T;
-  height?: T;
-  focalX?: T;
-  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "who-we-are_select".
  */
 export interface WhoWeAreSelect<T extends boolean = true> {
-  title?: T;
-  description?: T;
+  name?: T;
+  role?: T;
+  image?: T;
+  bio?: T;
+  email?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -568,9 +574,10 @@ export interface OurHistorySelect<T extends boolean = true> {
 export interface TeamSelect<T extends boolean = true> {
   name?: T;
   role?: T;
-  image?: T;
-  bio?: T;
   email?: T;
+  bio?: T;
+  positionOrder?: T;
+  image?: T;
   updatedAt?: T;
   createdAt?: T;
 }

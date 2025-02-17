@@ -1,85 +1,48 @@
 import Banner from "@components/Banner";
 import Image from "next/image";
-
-const teamMembers = [
-    {
-        name: "Rev Ann Tolland",
-        role: "Minister",
-        image: "/images/rev-a-tolland.jpg",
-        bio: "Ann has been leading our congregation for over 2 years with a heart for ministry and community outreach."
-    },
-    {
-        name: "Ian MacDonald",
-        role: "Clerk of Session",
-        image: "/images/ian-macdonald.jpg",
-        bio: "Ian works with the minister and session to ensure the church runs smoothly."
-    },
-    {
-        name: "Alan Holt",
-        role: "Church Officer",
-        image: "/images/alan-holt.jpg",
-        bio: "Alan manages church property and keeps everything running smoothly."
-    },
-    {
-        name: "Patricia Booth",
-        role: "Child Protection Officer",
-        image: "/images/placeholder-female.png",
-        bio: (<>
-            Patricia Booth is the Designated Person Under Child Protection Legislation. She can be contacted in complete confidence at any time:{" "}
-            <a href="mailto:mpbBT234LP@gmail.com" className="text-primary hover:underline">
-                mpbBT234LP@gmail.com
-            </a>
-        </>)
-    },
-    {
-        name: "Jack Crawford",
-        role: "Treasurer",
-        image: "/images/placeholder-male.jpg", // Placeholder for missing images
-        bio: "Our treasurer ensures the church's financial health and budgeting."
-    },
-    {
-        name: "Pat Davies",
-        role: "Honorary Secretary of Committee",
-        image: "/images/placeholder-female.png", // Placeholder for missing images
-        bio: "Pat is the secretary of the committee and ensures that all meetings are recorded and documented."
-    },
-];
+import { getCollectionContent } from "lib/payload"; // ✅ Import function to fetch team members
 
 export default async function OurTeam() {
+    const teamMembers = await getCollectionContent("team", 10); // ✅ Fetch up to 10 team members
+
     return (
         <div className="w-full">
-            {/* Banner Section */}
+            {/* ✅ Banner Section */}
             <Banner
                 publicId="regentStreetChurch/church-banner.png"
                 alt="Who's Who?"
                 title="Who's Who?"
-                textPosition="bottomRight" // ✅ Text in bottom
-                fontColour="one" // ✅ Text in accent color
+                textPosition="bottomRight"
+                fontColour="one"
             />
 
-            {/* Team Members Section */}
+            {/* ✅ Team Members Section */}
             <section className="bg-base-200 py-10">
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {teamMembers.map((member, index) => (
-                            <div key={index} className="text-center bg-base-100 p-6 shadow-md rounded-lg">
-                                {/* Profile Image */}
-                                <div className="w-36 h-36 mx-auto">
+                        {teamMembers?.map((member, index) => (
+                            <div key={index} className="bg-base-100 p-6 shadow-lg rounded-lg flex flex-col items-center text-center">
+                                {/* Profile Image - Rectangular with Rounded Corners */}
+                                <div className="w-40 h-52 overflow-hidden rounded-xl flex justify-center items-center bg-gray-200">
                                     <Image
-                                        src={member.image}
-                                        alt={member.name}
-                                        width={150}
-                                        height={150}
-                                        className="rounded-full object-cover"
+                                        src={member.image?.imageUrl || "/images/placeholder-male.jpg"} // ✅ Default image fallback
+                                        alt={member.image?.alt || member.name} // ✅ Accessible alt text
+                                        width={160}
+                                        height={200}
+                                        className="object-cover w-full h-full rounded-xl"
                                     />
                                 </div>
 
-                                {/* Name and Role */}
+                                {/* Name and Role (No Overlapping) */}
                                 <h2 className="text-lg font-bold text-primary mt-4">{member.name}</h2>
                                 <p className="text-secondary text-sm font-semibold">{member.role}</p>
 
-                                {/* Bio */}
-                                <p className="text-base-content mt-2">{member.bio}</p>
+                                {/* Bio (Properly formatted Rich Text) */}
+                                <p className="text-base-content mt-3">
+                                    {member.bio?.root?.children?.map((block, index) =>
+                                        block.children?.map((textNode) => textNode.text).join(" ")
+                                    ).join(" ") || "No bio available"}
+                                </p>
                             </div>
                         ))}
                     </div>

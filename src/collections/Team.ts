@@ -1,47 +1,48 @@
 import type { CollectionConfig } from 'payload';
-import { isAdminOrEditor, isSuperAdmin } from '../access/adminAccess';
+import {
+	isSuperAdminOrAdmin,
+	isAdminOrEditor,
+	isSuperAdmin,
+} from '../access/adminAccess';
 
-const Team: CollectionConfig = {
+export const Team: CollectionConfig = {
 	slug: 'team',
-	labels: {
-		singular: 'Team Member',
-		plural: 'Team Members',
-	},
 	admin: {
 		useAsTitle: 'name',
+		preview: (doc) => {
+			if (!doc?.id) return null;
+			return `${process.env.NEXT_PUBLIC_SITE_URL}/who-we-are/team/${doc.id}`;
+		},
 	},
 	access: {
-		read: () => true, // ✅ Everyone can read
-		create: isAdminOrEditor,
+		read: () => true,
+		create: isSuperAdminOrAdmin,
 		update: isAdminOrEditor,
 		delete: isSuperAdmin,
 	},
 	fields: [
+		{ name: 'name', type: 'text', required: true },
+		{ name: 'role', type: 'text', required: true },
+		{ name: 'email', type: 'text', required: false },
+		{ name: 'bio', type: 'richText' },
 		{
-			name: 'name',
-			type: 'text',
+			name: 'positionOrder',
+			type: 'number',
 			required: true,
+			defaultValue: 100, // Default value (higher number means lower priority)
+			admin: {
+				description: 'Lower numbers appear first.',
+			},
 		},
-		{
-			name: 'role',
-			type: 'text',
-			required: true,
-		},
+
 		{
 			name: 'image',
-			type: 'upload',
-			relationTo: 'media', // ✅ Assumes you have a 'media' collection for image uploads
-			required: false, // Not required since some have placeholders
-		},
-		{
-			name: 'bio',
-			type: 'richText', // ✅ Allows formatting options
-			required: true,
-		},
-		{
-			name: 'email',
-			type: 'email',
-			required: false, // ✅ Optional for contacts like Child Protection Officer
+			type: 'relationship', // ✅ Change from ObjectId to Relationship
+			relationTo: 'media', // ✅ Relate to media collection
+			required: false,
+			admin: {
+				description: 'Select a profile image from the Media library',
+			},
 		},
 	],
 };

@@ -1,5 +1,10 @@
 import { mongooseAdapter } from '@payloadcms/db-mongodb';
-import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import {
+	lexicalEditor,
+	lexicalHTML,
+	HTMLConverterFeature,
+} from '@payloadcms/richtext-lexical';
+
 import path from 'path';
 import { buildConfig } from 'payload';
 import { fileURLToPath } from 'url';
@@ -41,7 +46,12 @@ export default buildConfig({
 		Kids,
 	],
 	globals: [WhatsOn],
-	editor: lexicalEditor(),
+	editor: lexicalEditor({
+		features: ({ defaultFeatures }) => [
+			...defaultFeatures,
+			HTMLConverterFeature({}), // ✅ Allows conversion of rich text to JSX / HTML
+		],
+	}),
 	secret: process.env.PAYLOAD_SECRET || '',
 	typescript: {
 		outputFile: path.resolve(dirname, 'payload-types.ts'),

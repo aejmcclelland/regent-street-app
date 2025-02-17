@@ -2,7 +2,7 @@ import { CollectionConfig } from 'payload';
 
 export const Youth: CollectionConfig = {
 	slug: 'youth',
-	labels: { singular: 'Youth', plural: 'Youth Events' },
+	labels: { singular: 'Youth', plural: 'Youths' },
 	access: { read: () => true, update: () => true },
 	fields: [
 		{ name: 'title', type: 'text', required: true },
