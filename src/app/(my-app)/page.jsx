@@ -3,6 +3,8 @@ import Sundays from "../../components/Sundays";
 import FindUs from "../../components/FindUs";
 import Welcome from "../../components/Welcome";
 import About from "../../components/About";
+import TestDaisyUI from '@/components/TestDaisyUI';
+
 
 export default function Home() {
 	const heroImages = [
@@ -29,6 +31,7 @@ export default function Home() {
 			<Sundays />
 			<Welcome />
 			<About />
+			<TestDaisyUI />
 			<FindUs />
 		</div>
 	);

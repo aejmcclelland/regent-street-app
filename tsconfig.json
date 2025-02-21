@@ -24,19 +24,22 @@
     "baseUrl": "./src",
     "paths": {
       "@/*": [
-        "./src/*"
+        "*"
       ],
       "@payload-config": [
         "payload.config.ts"
+      ],
+      "@collections/*": [
+        "collections/*"
       ],
       "@components/*": [
         "components/*"
       ],
       "@pages/*": [
-        "app/(my-app)/pages/*"
+        "app/(my-app)/*"
       ]
     },
-    "target": "ES2017"
+    "target": "ES2022"
   },
   "include": [
     "next-env.d.ts",

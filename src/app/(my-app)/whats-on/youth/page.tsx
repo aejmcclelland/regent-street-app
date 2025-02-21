@@ -3,20 +3,21 @@ import { getCollectionContent } from "lib/payload";
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 
-// ✅ Define Type for Youth Content
+// Define Type for Youth Content
 interface YouthItem {
     id: string;
     title?: string;
-    description?: SerializedEditorState | null; // ✅ Allow `null`
+    description?: SerializedEditorState | null; 
 }
 
 export default async function Youth() {
-    const youthContent = (await getCollectionContent("youth")) as YouthItem[]; // ✅ Ensure Type Safety
+    const youthContent = (await getCollectionContent("youth")) as YouthItem[];
 
     console.log("Fetched Youth Content:", JSON.stringify(youthContent, null, 2));
 
     return (
         <div className="w-full">
+            {/* Banner */}
             <Banner
                 publicId="regentStreetChurch/praise_sample.jpg"
                 alt="Youth Ministry"
@@ -24,7 +25,7 @@ export default async function Youth() {
                 textPosition="bottomLeft"
                 fontColour="two"
             />
-
+            {/* Content */}
             <section className="bg-base-200 py-10">
                 <div className="container mx-auto px-4 space-y-10">
                     {youthContent.length > 0 ? (

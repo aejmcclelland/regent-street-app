@@ -1,7 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+ @plugin "daisyui" {
+   themes: light --default, dark --prefersdark, cupcake;
+ }
 
+
+
+@import "react-responsive-carousel/lib/styles/carousel.min.css";
 /* Default font */
 html {
    font-family: var(--font-poppins);

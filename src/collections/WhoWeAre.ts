@@ -12,13 +12,13 @@ export const WhoWeAre: CollectionConfig = {
 		plural: 'Team Members',
 	},
 	admin: {
-		useAsTitle: 'name', // ✅ Display names in admin panel
+		useAsTitle: 'name', // Display names in admin panel
 	},
 	access: {
-		read: () => true, // ✅ Publicly readable
-		create: isSuperAdminOrAdmin, // ✅ Only Admins can create
-		update: isAdminOrEditor, // ✅ Admins & Editors can update
-		delete: isSuperAdmin, // ✅ Only Super Admins can delete
+		read: () => true, //Publicly readable
+		create: isSuperAdminOrAdmin, // Only Admins can create
+		update: isAdminOrEditor, // Admins & Editors can update
+		delete: isSuperAdmin, //  Only Super Admins can delete
 	},
 	fields: [
 		{ name: 'name', type: 'text', required: true },
@@ -27,7 +27,7 @@ export const WhoWeAre: CollectionConfig = {
 			name: 'image',
 			label: 'Profile Image',
 			type: 'upload',
-			relationTo: 'media', // ✅ Ensure media collection exists
+			relationTo: 'media', //Ensure media collection exists
 			required: false,
 		},
 		{ name: 'bio', type: 'richText', required: true },

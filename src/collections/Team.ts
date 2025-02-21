@@ -37,8 +37,8 @@ export const Team: CollectionConfig = {
 
 		{
 			name: 'image',
-			type: 'relationship', // ✅ Change from ObjectId to Relationship
-			relationTo: 'media', // ✅ Relate to media collection
+			type: 'relationship', 
+			relationTo: 'media', 
 			required: false,
 			admin: {
 				description: 'Select a profile image from the Media library',

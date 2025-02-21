@@ -1,9 +1,9 @@
-import Banner from "@components/Banner";
+import Banner from "../../../../components/Banner";
 import { getCollectionContent } from "lib/payload";
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 
-// ✅ Define Type for Sundays Content
+//Define Type for Sundays Content
 interface SundaysItem {
     id: string;
     title?: string;
@@ -11,13 +11,15 @@ interface SundaysItem {
 }
 
 export default async function Sundays() {
-    const sundaysContent = (await getCollectionContent("sundays")) as SundaysItem[]; // ✅ Ensure Type Safety
+    const sundaysContent = (await getCollectionContent("sundays")) as SundaysItem[]; 
+
+    console.log('here is the NEXT_PUBLIC_SERVER_URL:', process.env.NEXT_PUBLIC_SERVER_URL);
 
     console.log("Fetched Sundays Content:", JSON.stringify(sundaysContent, null, 2));
 
     return (
         <div className="w-full">
-            {/* ✅ Banner Section */}
+            {/*  Banner Section */}
             <Banner
                 publicId="regentStreetChurch/praise_sample.jpg"
                 alt="Sunday Services"
@@ -25,8 +27,7 @@ export default async function Sundays() {
                 textPosition="bottomLeft"
                 fontColour="two"
             />
-
-            {/* ✅ Content Section */}
+            {/*  Content Section */}
             <section className="bg-base-200 py-10">
                 <div className="container mx-auto px-4 space-y-10">
                     {sundaysContent.length > 0 ? (

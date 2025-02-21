@@ -1,19 +1,16 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
+  "compilerptions": {
+    "baseUrl": "./src",
     "paths": {
       "@payload-config": [
-        "./src/payload.config.ts"
-      ],
-      "@/*": [
-        "./src/*"
-      ],
+        "payload.config.ts"
+      ], // ✅ Fix alias resolution
       "@components/*": [
         "components/*"
       ],
       "@pages/*": [
         "app/(my-app)/pages/*"
       ]
-    }
-  },
+    },
+  }
 }

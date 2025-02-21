@@ -23,19 +23,19 @@ export const WhatsOn: GlobalConfig = {
 		{
 			name: 'youthContent',
 			type: 'relationship',
-			relationTo: 'youth',
+			relationTo: ['youth'], // ✅ Lowercase
 			required: false,
 		},
 		{
 			name: 'sundaysContent',
 			type: 'relationship',
-			relationTo: 'sundays',
+			relationTo: ['sundays'], // ✅ Changed "Sundays" to lowercase
 			required: false,
 		},
 		{
 			name: 'kidsContent',
 			type: 'relationship',
-			relationTo: 'kids',
+			relationTo: ['children'], // ✅ Lowercase
 			required: false,
 		},
 	],

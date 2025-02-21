@@ -5,7 +5,7 @@ import {
 	isSuperAdmin,
 } from '../access/adminAccess';
 
-const OurHistory: CollectionConfig = {
+export const OurHistory: CollectionConfig = {
 	slug: 'our-history',
 	admin: {
 		useAsTitle: 'title',
