@@ -5,8 +5,21 @@
  */
 interface Document {
 	id: string;
-	title?: string;
-	description?: { root?: any } | null;
+	name: string;
+	role?: string;
+	email?: string;
+	bio?: any; // You can refine this type if needed
+	image?:
+		| {
+				id: string;
+				url?: string;
+				alt?: string;
+		  }
+		| string
+		| null;
+	createdAt: string;
+	updatedAt: string;
+	positionOrder: number;
 }
 
 interface CollectionResponse {
@@ -20,7 +33,7 @@ export async function getCollectionContent(
 	try {
 		console.log('Fetching collection:', collectionSlug);
 
-		const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/${collectionSlug}?limit=${limit}&depth=2&sort=positionOrder`;
+		const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/${collectionSlug}?limit=${limit}&depth=3&sort=positionOrder`;
 
 		const req = await fetch(apiUrl, { cache: 'no-store' });
 
@@ -30,14 +43,9 @@ export async function getCollectionContent(
 			);
 		}
 
-		const data: CollectionResponse = await req.json();
+		const data = await req.json();
 
-		return (
-			data?.docs.map((doc: Document) => ({
-				...doc,
-				description: doc.description?.root ? doc.description : null,
-			})) || []
-		);
+		return data?.docs || [];
 	} catch (error) {
 		console.error(`Error fetching ${collectionSlug} content:`, error);
 		return [];

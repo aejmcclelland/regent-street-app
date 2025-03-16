@@ -30,7 +30,7 @@
         "payload.config.ts"
       ],
       "@collections/*": [
-        "collections/*"
+        "./collections/*"
       ],
       "@components/*": [
         "components/*"

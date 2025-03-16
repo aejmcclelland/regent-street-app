@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload';
-import type { UserWithRoles } from '../types'; // Ensure this is correctly imported
+import type { UserWithRoles } from '@/types'; // Ensure this is correctly imported
 
 export const Users: CollectionConfig = {
 	slug: 'users',

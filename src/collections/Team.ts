@@ -9,10 +9,6 @@ export const Team: CollectionConfig = {
 	slug: 'team',
 	admin: {
 		useAsTitle: 'name',
-		preview: (doc) => {
-			if (!doc?.id) return null;
-			return `${process.env.NEXT_PUBLIC_SITE_URL}/who-we-are/team/${doc.id}`;
-		},
 	},
 	access: {
 		read: () => true,
@@ -26,22 +22,12 @@ export const Team: CollectionConfig = {
 		{ name: 'email', type: 'text', required: false },
 		{ name: 'bio', type: 'richText' },
 		{
-			name: 'positionOrder',
-			type: 'number',
-			required: true,
-			defaultValue: 100, // Default value (higher number means lower priority)
-			admin: {
-				description: 'Lower numbers appear first.',
-			},
-		},
-
-		{
 			name: 'image',
-			type: 'relationship', 
-			relationTo: 'media', 
+			type: 'upload',
+			relationTo: 'media', // ✅ Links to the Media collection
 			required: false,
 			admin: {
-				description: 'Select a profile image from the Media library',
+				description: 'Select an image from the Media library',
 			},
 		},
 	],

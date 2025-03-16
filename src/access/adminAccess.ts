@@ -4,20 +4,24 @@ import type { Access } from 'payload';
 type AdminUser = {
 	id: string;
 	email: string;
-	role: 'admin' | 'editor' | 'superadmin';
-	collection: 'admins';
+	roles: ('admin' | 'editor' | 'superadmin')[]; // ✅ Changed from `role` to `roles` array
+	collection: 'users'; // ✅ Changed from `admins` to `users`
 };
 
 // Type guard to check if req.user is an Admin
 const isAdminUser = (user: any): user is AdminUser => {
-	return user?.collection === 'admins' && typeof user.role === 'string';
+	return (
+		user?.collection === 'users' &&
+		Array.isArray(user.roles) &&
+		user.roles.length > 0
+	);
 };
 
 // ✅ Superadmins & Admins can create, read, update
 export const isSuperAdminOrAdmin: Access = ({ req }) => {
 	return (
 		isAdminUser(req.user) &&
-		(req.user.role === 'superadmin' || req.user.role === 'admin')
+		(req.user.roles.includes('superadmin') || req.user.roles.includes('admin'))
 	);
 };
 
@@ -25,15 +29,16 @@ export const isSuperAdminOrAdmin: Access = ({ req }) => {
 export const isAdminOrEditor: Access = ({ req }) => {
 	return (
 		isAdminUser(req.user) &&
-		(req.user.role === 'admin' ||
-			req.user.role === 'editor' ||
-			req.user.role === 'superadmin')
+		(req.user.roles.includes('admin') ||
+			req.user.roles.includes('editor') ||
+			req.user.roles.includes('superadmin'))
 	);
 };
 
 // ✅ Superadmins only
 export const isSuperAdmin: Access = ({ req }) => {
-	return isAdminUser(req.user) && req.user.role === 'superadmin';
+	console.log('Checking Super Admin Access: ', req.user);
+	return isAdminUser(req.user) && req.user.roles.includes('superadmin');
 };
 
 // ✅ Prevents deleting the last Super Admin
@@ -43,31 +48,30 @@ export const canDeleteAdmin: Access = async ({ req, id }) => {
 	}
 
 	// Ensure user attempting to delete is at least an admin
-	if (!isAdminUser(req.user) || req.user.role === 'editor') {
+	if (!isAdminUser(req.user) || req.user.roles.includes('editor')) {
 		return false;
 	}
 
-	// Check how many superadmins exist
+	// ✅ Check how many superadmins exist
 	const { totalDocs } = await req.payload.find({
-		collection: 'admins',
-		where: { role: { equals: 'superadmin' } },
+		collection: 'users', // ✅ Changed from 'admins' to 'users'
+		where: { roles: { contains: 'superadmin' } }, // ✅ Query roles array correctly
 		limit: 1,
 	});
 
 	// ✅ Superadmin can delete anyone (except last superadmin)
-	if (req.user.role === 'superadmin') {
+	if (req.user.roles.includes('superadmin')) {
 		return totalDocs > 1 || id !== req.user.id;
 	}
 
-	// ✅ Admin can only delete other admins & editors, NOT superadmins
-	if (req.user.role === 'admin') {
-		const targetAdmin = await req.payload.findByID({
-			collection: 'admins',
+	if (req.user.roles.includes('admin')) {
+		const targetAdmin = (await req.payload.findByID({
+			collection: 'users', // ✅ Ensure correct collection
 			id,
-		});
+		})) as unknown as AdminUser | null; // ✅ Convert to unknown first, then to AdminUser
 
 		// Prevent deleting superadmin
-		return targetAdmin?.role !== 'superadmin';
+		return targetAdmin?.roles?.includes('superadmin') === false;
 	}
 
 	return false;
