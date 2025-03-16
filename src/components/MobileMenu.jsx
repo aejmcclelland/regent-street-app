@@ -19,7 +19,7 @@ export default function MobileMenu({ isOpen, toggleMenu, navigationWhatsOn, navi
     };
 
     return (
-        <ul className="absolute top-full left-0 w-full bg-base-100 shadow-lg p-4 text-base-content z-50 flex flex-col">
+        <ul className="w-full bg-base-100 p-4 text-base-content z-50 flex flex-col divide-y-0">
             {/* What's On Section */}
             <li className="w-full">
                 <button
