@@ -3,11 +3,7 @@ import type { CollectionConfig } from 'payload';
 export const Media: CollectionConfig = {
 	slug: 'media',
 	admin: {
-		useAsTitle: 'filename', //  Fixes "filename does not exist" error
-	},
-	upload: {
-		staticDir: 'media', //  Store media in a static directory
-		mimeTypes: ['image/*'], //  Restrict to images only
+		useAsTitle: 'cloudinaryUrl', //  Fixes "filename does not exist" error
 	},
 	access: {
 		read: () => true,
@@ -16,6 +12,14 @@ export const Media: CollectionConfig = {
 		delete: () => true,
 	},
 	fields: [
+		{
+			name: 'cloudinaryUrl',
+			type: 'text',
+			required: true,
+			admin: {
+				description: 'Paste the Cloudinary URL for this image.',
+			},
+		},
 		{
 			name: 'alt',
 			type: 'text',

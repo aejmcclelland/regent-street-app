@@ -28,7 +28,11 @@ export default async function OurTeam() {
                                     {/* Profile Image - Rectangular with Rounded Corners */}
                                     <div className="w-40 h-52 overflow-hidden rounded-xl flex justify-center items-center bg-gray-200">
                                         <Image
-                                            src={member.image?.url || "/images/placeholder-male.jpg"}
+                                            src={
+                                                member.image?.cloudinaryUrl || // Prefer Cloudinary URL if available
+                                                (member.image?.url ? `/media/${member.image?.filename}` : null) || // Fallback to local upload
+                                                "/images/placeholder-male.jpg" // Final fallback
+                                            }
                                             alt={member.image?.alt || member.name} // Use alt if provided
                                             width={160}
                                             height={208}

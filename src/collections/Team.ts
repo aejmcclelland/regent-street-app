@@ -23,11 +23,11 @@ export const Team: CollectionConfig = {
 		{ name: 'bio', type: 'richText' },
 		{
 			name: 'image',
-			type: 'upload',
-			relationTo: 'media', // ✅ Links to the Media collection
+			type: 'relationship',
+			relationTo: 'media',
 			required: false,
 			admin: {
-				description: 'Select an image from the Media library',
+				description: 'Select a Cloudinary image from Media library',
 			},
 		},
 	],
