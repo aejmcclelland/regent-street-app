@@ -157,7 +157,7 @@ export default function Navbar() {
                     <div className="h-16"></div>
 
                     {/* Social icons in a fixed position */}
-                    <div className="absolute bottom-4 right-4 flex space-x-3">
+                    <div className="absolute bottom-4 left-4 flex space-x-3">
                         {socialLinks.map((link, index) => (
                             <a
                                 key={index}
