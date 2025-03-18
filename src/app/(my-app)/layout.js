@@ -14,14 +14,14 @@ const poppins = Poppins({
 
 export default function RootLayout({ children }) {
 	return (
-		<html lang='en' data-theme='emerald' className={`${poppins.variable}`}>
+		<html lang='en' data-theme='regentSweets' className={`${poppins.variable}`}>
 			<head>
 				<title>{metadata.title}</title>
 				<meta name='description' content={metadata.description} />
 			</head>
-			<body className='antialiased'>
+			<body className='antialiased bg-base-200 text-base-content'>
 				<Navbar />
-				<main>{children}</main>
+				<main className='pt-18'>{children}</main>
 				<Footer />
 			</body>
 		</html>

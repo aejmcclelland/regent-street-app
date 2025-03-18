@@ -37,10 +37,10 @@
     "@types/estree-jsx": "^1.0.5",
     "@types/hast": "^3.0.4",
     "@types/mdast": "^4.0.4",
-    "@types/react": "^19.0.8",
+    "@types/react": "^19.0.10",
     "autoprefixer": "^10.4.21",
     "css-loader": "^7.1.2",
-    "daisyui": "5.0.0-beta.8",
+    "daisyui": "5.0.6",
     "esbuild": "^0.25.1",
     "eslint": "^9.22.0",
     "eslint-config-next": "^15.2.2",
@@ -64,5 +64,5 @@
     ],
     "overrides": {}
   },
-  "packageManager": "pnpm@10.6.3+sha512.bb45e34d50a9a76e858a95837301bfb6bd6d35aea2c5d52094fa497a467c43f5c440103ce2511e9e0a2f89c3d6071baac3358fc68ac6fb75e2ceb3d2736065e6"
+  "packageManager": "pnpm@10.6.4+sha512.da3d715bfd22a9a105e6e8088cfc7826699332ded60c423b14ec613a185f1602206702ff0fe4c438cb15c979081ce4cb02568e364b15174503a63c7a8e2a5f6c"
 }

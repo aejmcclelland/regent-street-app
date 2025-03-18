@@ -6,8 +6,7 @@ export default function Footer() {
 
     return (
         <footer className="footer bg-neutral py-10 px-6 text-base-content">
-            <div className="container mx-auto grid grid-cols-1 sm:grid-cols-4 gap-6 text-center sm:text-left">
-
+            <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center sm:text-left">
                 {/* Church Info & Copyright */}
                 <nav>
                     <h6 className="footer-title text-primary">Regent Street Presbyterian</h6>

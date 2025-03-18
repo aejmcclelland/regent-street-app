@@ -21,12 +21,12 @@ export default async function OurTeam() {
             {/* Team Members Section */}
             <section className="bg-base-200 py-10">
                 <div className="container mx-auto px-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         {teamMembers?.length > 0 ? (
                             teamMembers.map((member) => (
                                 <div key={member.id} className="bg-base-100 p-6 shadow-lg rounded-lg flex flex-col items-center text-center">
                                     {/* Profile Image - Rectangular with Rounded Corners */}
-                                    <div className="w-40 h-52 overflow-hidden rounded-xl flex justify-center items-center bg-gray-200">
+                                    <div className="w-40 h-40 overflow-hidden rounded-full flex justify-center items-center bg-gray-200">
                                         <Image
                                             src={
                                                 member.image?.cloudinaryUrl || // Prefer Cloudinary URL if available
@@ -36,7 +36,7 @@ export default async function OurTeam() {
                                             alt={member.image?.alt || member.name} // Use alt if provided
                                             width={160}
                                             height={208}
-                                            className="object-cover w-full h-full rounded-xl"
+                                            className="object-cover w-full h-full rounded-full"
                                         />
                                     </div>
 

@@ -30,6 +30,16 @@ export const Team: CollectionConfig = {
 				description: 'Select a Cloudinary image from Media library',
 			},
 		},
+		{
+			name: 'positionOrder',
+			type: 'number',
+			required: true,
+			admin: {
+				description:
+					'Lower numbers appear first (e.g. 1 = Minister, 2 = Elder, 3 = Member)',
+			},
+			defaultValue: 99, // Default to a high number so lesser roles go at the end
+		},
 	],
 };
 

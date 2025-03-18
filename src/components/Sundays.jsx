@@ -6,7 +6,7 @@ import FeaturedContent from "./FeaturedContent";
 
 export default function Sundays() {
     return (
-        <section className="bg-neutral-content py-16 px-6 text-center text-white">
+        <section className="bg-base-200 py-16 px-6 text-center text-white">
             <div className="container mx-auto max-w-4xl">
                 {/* Title */}
                 <h2 className="text-4xl font-poppins-700 text-primary-content mb-6">Sundays are the best day of the week! Let’s spend them together.</h2>
