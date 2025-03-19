@@ -6,34 +6,35 @@ export default function Footer() {
 
     return (
         <footer className="footer bg-neutral py-10 px-6 text-base-content">
-            <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center sm:text-left">
-                {/* Church Info & Copyright */}
-                <nav>
+            <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                {/* Church Info */}
+                <div className="flex flex-col items-center text-center lg:items-start lg:text-left w-full">
                     <h6 className="footer-title text-primary">Regent Street Presbyterian</h6>
                     <p className="text-sm text-gray-400">
                         &copy; {currentYear} Regent Street Presbyterian Church. All rights reserved.
                     </p>
-                </nav>
+                </div>
 
                 {/* Service Times */}
-                <nav>
+                <div className="flex flex-col items-center text-center lg:items-start lg:text-left w-full">
                     <h6 className="footer-title text-primary">Service Times</h6>
                     <p className="text-sm text-gray-400">Sunday Worship - 11:00 AM</p>
                     <p className="text-sm text-gray-400">Midweek Bible Study - Wednesday 7:30 PM</p>
-                </nav>
+                </div>
 
-                {/* Contact & Location */}
-                <nav>
+                {/* Contact Info */}
+                <div className="flex flex-col items-center text-center lg:items-start lg:text-left w-full">
                     <h6 className="footer-title text-primary">Contact Us</h6>
                     <p className="text-sm text-gray-400">48a Regent Street, Newtownards, BT23 4LP</p>
                     <a href="mailto:regent.st@btconnect.com" className="text-primary hover:underline text-sm">
                         regent.st@btconnect.com
                     </a>
                     <p className="text-sm text-primary">Phone: 028 9182 2416</p>
-                </nav>
+                </div>
 
-                {/* Notices Section */}
-                <nav>
+                {/* Notices */}
+                <div className="flex flex-col items-center text-center lg:items-start lg:text-left w-full">
                     <h6 className="footer-title text-primary">Notices</h6>
                     <p className="text-sm text-gray-400">
                         Registered with the Charity Commission for Northern Ireland NIC105068.
@@ -49,10 +50,10 @@ export default function Footer() {
                     >
                         PCI Internet Use Guidelines
                     </a>
-                </nav>
+                </div>
             </div>
 
-            {/* Social Media Icons (Centered Below for Mobile) */}
+            {/* Social Media Icons - Centered for Mobile */}
             <div className="mt-8 flex justify-center space-x-6">
                 <a
                     href="https://www.facebook.com/yourpage"

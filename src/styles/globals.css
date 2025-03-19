@@ -3,6 +3,7 @@
 
 
 
+
 @plugin "daisyui/theme" {
   name: "regentSweets";
   default: false;
@@ -10,7 +11,7 @@
   color-scheme: "light";
   --color-base-100: oklch(98% 0.001 106.423);
   --color-base-200: oklch(92% 0.013 255.508);
-  --color-base-300: oklch(92% 0.003 48.717);
+  --color-base-300: oklch(87% 0.065 274.039);
   --color-base-content: oklch(21% 0.006 56.043);
   --color-primary: oklch(67% 0.182 276.935);
   --color-primary-content: oklch(25% 0.09 281.288);
@@ -38,6 +39,18 @@
   --noise: 0;
 }
 
+.footer div {
+  align-items: center !important;
+  text-align: center !important;
+}
+
+/* When screen size is large, align left */
+@media (min-width: 1024px) {
+  .footer div {
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+}
 
 
 
@@ -77,4 +90,8 @@ body {
     top: 100%;
     left: 0;
     z-index: 50; /* Ensure it stays above other elements */
+}
+.footer nav {
+  display: block !important; /* Ensures it does not inherit flex */
+  text-align: center; /* Forces center alignment */
 }
