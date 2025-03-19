@@ -49,6 +49,7 @@ export default function Footer() {
                         className="text-primary hover:underline text-sm block mt-2"
                     >
                         PCI Internet Use Guidelines
+                        
                     </a>
                 </div>
             </div>
