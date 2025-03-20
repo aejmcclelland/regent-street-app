@@ -82,9 +82,9 @@ export default function Navbar() {
 
                             {/* Center Links */}
                             <ul className="hidden lg:flex gap-6 items-center text-base-content relative z-50 mt-0">
-                                <Dropdown title="Who We Are" items={navigationWhoWeAre} />
-                                <Dropdown title="What's On" items={navigationWhatsOn} />
-                                <Dropdown title="Community" items={navigationCommunity} />
+                                <Dropdown title="Who We Are" items={navigationWhoWeAre} isScrolled={isScrolled} />
+                                <Dropdown title="What's On" items={navigationWhatsOn} isScrolled={isScrolled} />
+                                <Dropdown title="Community" items={navigationCommunity} isScrolled={isScrolled} />
 
                                 {/* Social Media Icons (DESKTOP) */}
                                 <div className="flex items-center space-x-4 ml-9">

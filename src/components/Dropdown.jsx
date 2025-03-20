@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const Dropdown = ({ title, items }) => {
+export default function Dropdown({ title, items, isScrolled }) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -20,12 +20,16 @@ const Dropdown = ({ title, items }) => {
             </div>
 
             {/* Transparent Bridge Above Dropdown (Prevents Closing Too Soon) */}
-            {isOpen && <div className="absolute left-0 top-full w-full h-[16px] bg-transparent"></div>}
+            {isOpen && <div className="absolute left-0 top-full w-full h-[12px] bg-transparent"></div>}
 
             {/* Dropdown Menu */}
             {isOpen && (
                 <ul
-                    className="absolute left-0 top-[calc(100%+16px)] w-44 bg-base-100 shadow-md p-2 border border-gray-300 rounded-none z-50"
+                    className={`absolute left-0 w-44 bg-base-100 shadow-md p-2 border border-gray-300 rounded-none transition-all duration-300
+                       ${isScrolled
+                            ? "top-[calc(100%+10px)] bg-white/70 backdrop-blur-md shadow-lg border border-white/40"
+                            : "top-[calc(100%+18px)] bg-base-100 shadow-md border border-gray-300"
+                        }`}
                 >
                     {items.map((item) => (
                         <li key={item.text}>
@@ -42,5 +46,3 @@ const Dropdown = ({ title, items }) => {
         </div>
     );
 };
-
-export default Dropdown;
