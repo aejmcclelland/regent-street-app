@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload';
 import type { UserWithRoles } from '@/types'; // Ensure this is correctly imported
 import { isSuperAdminOrAdmin, isSuperAdmin } from '../access/adminAccess';
+import { lexicalEditor } from '@payloadcms/richtext-lexical';
 
 export const HolidayBibleClub: CollectionConfig = {
 	slug: 'holidayBibleClub',
@@ -29,7 +30,12 @@ export const HolidayBibleClub: CollectionConfig = {
 	},
 	fields: [
 		{ name: 'name', type: 'text', required: true },
-		{ name: 'description', type: 'textarea', required: true },
+		{
+			name: 'description',
+			type: 'richText',
+			required: true,
+			editor: lexicalEditor(),
+		},
 		{ name: 'image', type: 'upload', relationTo: 'media', required: false },
 		{ name: 'slug', type: 'text', required: true },
 		{

@@ -72,6 +72,11 @@ export async function getCollectionContent(
 	try {
 		console.log('Fetching collection:', collectionSlug);
 
+		const params = new URLSearchParams({
+			limit: limit.toString(),
+			depth: '3',
+		});
+
 		const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/${collectionSlug}?limit=${limit}&depth=3&sort=positionOrder`;
 
 		const req = await fetch(apiUrl, { cache: 'no-store' });

@@ -31,6 +31,16 @@ export const Children: CollectionConfig = {
 			},
 		},
 		{
+			name: 'positionOrder',
+			type: 'number',
+			required: false,
+			admin: {
+				position: 'sidebar',
+				description:
+					'Set the display order of cards on the Children’s Ministry page.',
+			},
+		},
+		{
 			name: 'linkedPage',
 			type: 'relationship',
 			relationTo: [

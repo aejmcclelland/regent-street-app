@@ -26,6 +26,8 @@ export async function resolveLinkedPage({
 		'beavers',
 		'scouts',
 		'guides',
+		'rainbows',
+		'brownies',
 	];
 	for (const fallbackCollection of fallbackCollections) {
 		const fallbackEntry = await getSingleCollectionItem(

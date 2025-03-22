@@ -1,12 +1,19 @@
 import { getCollectionContent } from "lib/payload";
-import ChildrenCard from "@/components/ChildrenCard";
 import Banner from "@/components/Banner";
+import { groupCardComponents } from "@/components/groupCardComponents";
+
+function extractPlainTextFromLexical(description) {
+    if (!description || typeof description !== "object" || !Array.isArray(description.root?.children)) return "";
+
+    return description.root.children
+        .map((child) => child.text || (child.children ? child.children.map((n) => n.text).join(" ") : ""))
+        .join(" ")
+        .trim();
+}
 
 export default async function ChildrenPage() {
     // Fetch the groups from Payload CMS
-    const childrenGroups = await getCollectionContent("children", 10); // Fetch up to 10 groups
-
-    console.log("Children Groups:", childrenGroups);
+    const childrenGroups = await getCollectionContent("children", 10, { sort: "positionOrder" }); // Fetch up to 10 groups
 
     return (
         <div className="w-full">
@@ -24,21 +31,24 @@ export default async function ChildrenPage() {
                 <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-6">
                     {childrenGroups.length > 0 ? (
                         childrenGroups.map((group) => {
-                            console.log(group);
-                            if (group.slug === "scouts" || group.slug === "guides") {
-                                const GroupCard = require(`@/components/${group.slug.charAt(0).toUpperCase() + group.slug.slice(1)}GroupCard`).default;
-                                return (
-                                    <GroupCard
-                                        key={group.id}
-                                        group={{
-                                            ...group.linkedPage?.value,
-                                            image: group.image, // fallback or top-level image
-                                        }}
-                                    />
-                                );
-                            } else {
-                                return <ChildrenCard key={group.id} group={group} />;
-                            }
+                            const Component =
+                                groupCardComponents[group.slug] || groupCardComponents.default;
+
+                            return (
+                                <Component
+                                    key={group.id}
+                                    group={{
+                                        name: group.name,
+                                        image: group.image,
+                                        slug: group.slug,
+                                        subgroups: group.linkedPage?.value?.subgroups || [],
+                                        description:
+                                            typeof group.description === "object"
+                                                ? extractPlainTextFromLexical(group.description)
+                                                : group.description,
+                                    }}
+                                />
+                            );
                         })
                     ) : (
                         <p className="text-center text-gray-500">No children’s groups found.</p>
