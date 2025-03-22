@@ -39,7 +39,23 @@ export const Scouts: CollectionConfig = {
 			required: false,
 			hasMany: true,
 		},
+		{
+			name: 'subgroups',
+			type: 'array',
+			fields: [
+				{ name: 'title', type: 'text', required: true },
+				{ name: 'slug', type: 'text', required: true },
+				{ name: 'image', type: 'upload', relationTo: 'media', required: true },
+			],
+		},
+		{
+			name: 'banner',
+			type: 'upload',
+			relationTo: 'media',
+			required: false,
+			admin: {
+				position: 'sidebar',
+			},
+		},
 	],
 };
-
-export default Scouts;

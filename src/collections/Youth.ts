@@ -61,6 +61,15 @@ export const Youth: CollectionConfig = {
 			required: false,
 			hasMany: true, // Allows multiple leaders per group
 		},
+		{
+			name: 'banner',
+			type: 'upload',
+			relationTo: 'media',
+			required: false,
+			admin: {
+				position: 'sidebar',
+			},
+		},
 	],
 };
 

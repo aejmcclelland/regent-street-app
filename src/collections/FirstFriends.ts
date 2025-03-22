@@ -9,7 +9,7 @@ export const FirstFriends: CollectionConfig = {
 		plural: 'First Friends Groups',
 	},
 	admin: {
-		useAsTitle: 'title',
+		useAsTitle: 'name',
 	},
 	access: {
 		read: () => true, // Everyone can view
@@ -19,7 +19,7 @@ export const FirstFriends: CollectionConfig = {
 	},
 	fields: [
 		{
-			name: 'title',
+			name: 'name',
 			type: 'text',
 			required: true,
 		},
@@ -50,6 +50,15 @@ export const FirstFriends: CollectionConfig = {
 			relationTo: 'users',
 			required: false,
 			hasMany: true, // Multiple leaders can be assigned
+		},
+		{
+			name: 'banner',
+			type: 'upload',
+			relationTo: 'media',
+			required: false,
+			admin: {
+				position: 'sidebar',
+			},
 		},
 	],
 };

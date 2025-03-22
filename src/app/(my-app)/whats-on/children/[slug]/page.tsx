@@ -15,7 +15,7 @@ export default async function ChildrenGroupPage({ params }: { params: Promise<{ 
         slug,
     });
 
-    if (!displayData) {
+    if (!displayData?.name) {
         return <p className="text-center text-gray-500">Group not found.</p>;
     }
 
@@ -25,7 +25,7 @@ export default async function ChildrenGroupPage({ params }: { params: Promise<{ 
                 <figure className="w-full sm:w-1/3">
                     <Image
                         src={displayData.image?.cloudinaryUrl || "/images/placeholder.jpg"}
-                      alt={displayData.image?.alt || displayData.name || "Children's ministry image"}
+                        alt={displayData.image?.alt || displayData.name || "Children's ministry image"}
                         width={350}
                         height={300}
                         className="object-cover w-full h-full rounded-lg"
@@ -41,7 +41,22 @@ export default async function ChildrenGroupPage({ params }: { params: Promise<{ 
                 </div>
             </div>
 
-            <Link href="/whats-on/children" className="btn btn-outline btn-sm mt-6">
+            {Array.isArray(displayData.subgroups) && displayData.subgroups.length > 0 && (
+                <div className="mt-6">
+                    <ul className="menu menu-vertical lg:menu-horizontal menu-lg bg-base-200 rounded-box">
+                        {Array.isArray(displayData.subgroups) &&
+                            displayData.subgroups.map((sub: any) => (
+                                <li key={sub.slug}>
+                                    <Link href={`/whats-on/children/${sub.slug}`}>
+                                        {sub.name}
+                                    </Link>
+                                </li>
+                            ))}
+                    </ul>
+                </div>
+            )}
+
+            <Link href="/whats-on/children" className="btn btn-soft btn-primary mt-6">  
                 ← Back to All Children’s Ministry
             </Link>
         </div>

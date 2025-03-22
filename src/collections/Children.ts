@@ -22,6 +22,15 @@ export const Children: CollectionConfig = {
 		{ name: 'image', type: 'upload', relationTo: 'media', required: false },
 		{ name: 'slug', type: 'text', required: true },
 		{
+			name: 'banner',
+			type: 'upload',
+			relationTo: 'media',
+			required: false,
+			admin: {
+				position: 'sidebar',
+			},
+		},
+		{
 			name: 'linkedPage',
 			type: 'relationship',
 			relationTo: [
@@ -30,6 +39,11 @@ export const Children: CollectionConfig = {
 				'sundaySchool',
 				'scouts',
 				'guides',
+				'rainbows',
+				'brownies',
+				'beavers',
+				'cubs',
+				'squirrels',
 			] as const,
 			required: false,
 		},

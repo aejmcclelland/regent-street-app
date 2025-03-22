@@ -58,6 +58,15 @@ export const OurHistory: CollectionConfig = {
 				},
 			],
 		},
+		{
+			name: 'banner',
+			type: 'upload',
+			relationTo: 'media',
+			required: false,
+			admin: {
+				position: 'sidebar',
+			},
+		},
 	],
 };
 

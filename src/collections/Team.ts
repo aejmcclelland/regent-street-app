@@ -40,6 +40,15 @@ export const Team: CollectionConfig = {
 			},
 			defaultValue: 99, // Default to a high number so lesser roles go at the end
 		},
+		{
+			name: 'banner',
+			type: 'upload',
+			relationTo: 'media',
+			required: false,
+			admin: {
+				position: 'sidebar',
+			},
+		},
 	],
 };
 

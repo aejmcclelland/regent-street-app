@@ -20,9 +20,11 @@ export default function RootLayout({ children }) {
 				<meta name='description' content={metadata.description} />
 			</head>
 			<body className='antialiased bg-base-200 text-base-content'>
-				<Navbar />
-				<main className='pt-18'>{children}</main>
-				<Footer />
+				<div className='flex flex-col min-h-screen'>
+					<Navbar />
+					<main className='pt-18 flex-grow pb-6'>{children}</main>
+					<Footer />
+				</div>
 			</body>
 		</html>
 	);

@@ -22,24 +22,27 @@ export default function Banner({ publicId, alt, title, textPosition = "center", 
 
     return (
         <div className="relative w-full h-[300px]">
-            {/* Full Black Overlay (Ensures it Covers Entire Banner) */}
             <div className="absolute inset-0 bg-black/40 z-10"></div>
 
-            {/* Cloudinary Image */}
-            <CldImage
-                src={publicId}
-                width={1600}
-                height={500}
-                alt={alt}
-                crop="fill"
-                gravity="auto"
-                className="w-full h-full object-cover"
-            />
+            {/* Conditional Cloudinary Image */}
+            {publicId ? (
+                <CldImage
+                    src={publicId}
+                    width={1600}
+                    height={500}
+                    alt={alt}
+                    crop="fill"
+                    gravity="auto"
+                    className="w-full h-full object-cover"
+                />
+            ) : (
+                <div className="w-full h-full bg-gray-300" />
+            )}
 
             {/* Title Overlay */}
             {title && (
                 <div className={`absolute ${positionClasses[textPosition]} z-20`}>
-                    <h1 className={`text-7xl sm:text-8xl font-bold drop-shadow-lg ${textColourClasses[fontColour]}`}>
+                    <h1 className={`text-4xl sm:text-6xl md:text-7xl font-bold drop-shadow-lg ${textColourClasses[fontColour]}`}>
                         {title}
                     </h1>
                 </div>

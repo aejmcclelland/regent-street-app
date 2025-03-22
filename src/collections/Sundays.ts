@@ -8,6 +8,15 @@ export const Sundays: CollectionConfig = {
 		{ name: 'title', type: 'text', required: true },
 		{ name: 'date', type: 'date', required: true },
 		{ name: 'description', type: 'richText' },
+		{
+			name: 'banner',
+			type: 'upload',
+			relationTo: 'media',
+			required: false,
+			admin: {
+				position: 'sidebar',
+			},
+		},
 	],
 };
 

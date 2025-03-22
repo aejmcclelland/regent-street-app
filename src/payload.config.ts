@@ -22,6 +22,11 @@ import { Guides } from './collections/Guides';
 import { Scouts } from './collections/Scouts';
 import { HolidayBibleClub } from './collections/HolidayBibleClub';
 import { SundaySchool } from './collections/SundaySchool';
+import { Brownies } from './collections/Brownies';
+import { Rainbows } from './collections/Rainbows';
+import { Beavers } from './collections/Beavers';
+import { Cubs } from './collections/Cubs';
+import { Squirrels } from './collections/Squirrels';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -47,6 +52,11 @@ export default buildConfig({
 		Scouts,
 		HolidayBibleClub,
 		SundaySchool,
+		Brownies,
+		Rainbows,
+		Beavers,
+		Cubs,
+		Squirrels,
 	],
 	editor: lexicalEditor({
 		features: ({ defaultFeatures }) => [...defaultFeatures],

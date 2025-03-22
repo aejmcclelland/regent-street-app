@@ -39,6 +39,15 @@ export const SundaySchool: CollectionConfig = {
 			required: false,
 			hasMany: true,
 		},
+		{
+			name: 'banner',
+			type: 'upload',
+			relationTo: 'media',
+			required: false,
+			admin: {
+				position: 'sidebar',
+			},
+		},
 	],
 };
 

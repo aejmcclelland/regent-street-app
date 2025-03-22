@@ -24,7 +24,7 @@ export default function ChildrenCard({ group }) {
                 <p className="text-gray-600">{group.description}</p>
 
                 <div className="card-actions justify-end">
-                    <Link href={`/whats-on/children/${group.slug}`} className="btn btn-primary btn-sm">
+                    <Link href={`/whats-on/children/${group.slug}`} className="btn  btn-lg btn-soft btn-primary">
                         Learn More
                     </Link>
                 </div>

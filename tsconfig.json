@@ -48,7 +48,7 @@
     "**/*.ts",
     "**/*.tsx",
     "src/payload.config.ts"
-  ],
+, "src/components/GuidesGroupCard.jsx"  ],
   "exclude": [
     "node_modules"
   ]
