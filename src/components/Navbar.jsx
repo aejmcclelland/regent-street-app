@@ -38,7 +38,7 @@ export default function Navbar() {
     ];
 
     const navigationWhoWeAre = [
-        { link: "/who-we-are/vision", text: "Our Vision" },
+        { link: "/who-we-are/values", text: "Our Values" },
         { link: "/who-we-are/team", text: "Our Team" },
         { link: "/who-we-are/our-history", text: "Our History" },
         { link: "/who-we-are/beliefs", text: "Our Beliefs" },

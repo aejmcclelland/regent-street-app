@@ -11,16 +11,16 @@ export const Users: CollectionConfig = {
 		read: () => true,
 		create: () => true,
 		update: ({ req }) => {
+			if (!req.user) return false; // Ensure it always returns a valid AccessResult
 			const user = req.user as UserWithRoles;
-			return (
-				user?.roles?.includes('admin') ||
-				user?.roles?.includes('superadmin') ||
-				false
-			);
+			return user.roles?.includes('admin') || user.roles?.includes('superadmin')
+				? true
+				: false;
 		},
 		delete: ({ req }) => {
+			if (!req.user) return false;
 			const user = req.user as UserWithRoles;
-			return user?.roles?.includes('superadmin') || false;
+			return user.roles?.includes('superadmin') ? true : false;
 		},
 	},
 	fields: [

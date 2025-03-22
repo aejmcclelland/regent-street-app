@@ -26,6 +26,45 @@ interface CollectionResponse {
 	docs: Document[];
 }
 
+/**
+ * Fetch a single document from a specific Payload CMS collection using its slug
+ * @param collectionSlug - The collection slug to fetch from
+ * @param slug - The slug of the document to fetch
+ */
+export async function getSingleCollectionItem(
+	collectionSlug: string,
+	slug: string
+) {
+	try {
+		console.log(
+			`Fetching single item from collection: ${collectionSlug}, slug: ${slug}`
+		);
+
+		// Construct the API URL for fetching a single document
+		const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/${collectionSlug}?where[slug][equals]=${slug}&depth=3`;
+
+		// Fetch data from Payload REST API
+		const req = await fetch(apiUrl, { cache: 'no-store' });
+
+		if (!req.ok) {
+			throw new Error(
+				`Failed to fetch ${collectionSlug} item: ${req.statusText}`
+			);
+		}
+
+		const data = await req.json();
+
+		// Return the first document found or null if not found
+		return data?.docs?.[0] || null;
+	} catch (error) {
+		console.error(
+			`Error fetching ${collectionSlug} item with slug "${slug}":`,
+			error
+		);
+		return null;
+	}
+}
+
 export async function getCollectionContent(
 	collectionSlug: string,
 	limit: number = 10

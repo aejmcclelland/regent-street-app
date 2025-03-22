@@ -21,21 +21,21 @@ export const WhatsOn: GlobalConfig = {
 			required: true,
 		},
 		{
-			name: 'youthContent',
+			name: 'youth',
 			type: 'relationship',
-			relationTo: ['youth'], // ✅ Lowercase
+			relationTo: ['youth'],
 			required: false,
 		},
 		{
-			name: 'sundaysContent',
+			name: 'sundays',
 			type: 'relationship',
-			relationTo: ['sundays'], // ✅ Changed "Sundays" to lowercase
+			relationTo: ['sundays'],
 			required: false,
 		},
 		{
-			name: 'kidsContent',
+			name: 'children',
 			type: 'relationship',
-			relationTo: ['children'], // ✅ Lowercase
+			relationTo: 'children',
 			required: false,
 		},
 	],

@@ -39,6 +39,11 @@
   --noise: 0;
 }
 
+.menu a {
+    font-size: 1.125rem; /* Equivalent to text-lg in Tailwind */
+    font-weight: bold;    
+}
+
 .footer div {
   align-items: center !important;
   text-align: center !important;

@@ -20,7 +20,7 @@ export default function ScrollNavbar({ children }) {
 
     return (
         <div
-            className={`navbar bg-base-100/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'h-14' : 'h-20'
+            className={`navbar bg-base-100 shadow-md fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'h-14' : 'h-20'
                 }`}>
             {children(isScrolled)}
         </div>

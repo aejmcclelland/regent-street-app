@@ -1,13 +1,13 @@
 import Banner from '@components/Banner';
 
-export default async function Vision() {
+export default async function Values() {
     return (
         <div className="w-full">
             {/* Banner Section with Dynamic Title */}
             <Banner
                 publicId="regentStreetChurch/praise_sample.jpg"
-                alt="Church Vision"
-                title="Our Vision"
+                alt="Church Values"
+                title="Our Values"
                 textPosition="bottomRight" // ✅ Text in bottom right
                 fontColour="three" // ✅ Text in secondary colour
             />

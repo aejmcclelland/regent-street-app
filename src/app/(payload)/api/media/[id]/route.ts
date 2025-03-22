@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
 import payload from 'payload';
 
-export async function GET(req: Request, context: { params: { id: string } }) {
+export async function GET(req: Request, { params }: any) {
 	try {
-		const id = context.params.id;
+		const { id } = params;
 
 		if (!id) {
 			return NextResponse.json({ error: 'Missing media ID' }, { status: 400 });
