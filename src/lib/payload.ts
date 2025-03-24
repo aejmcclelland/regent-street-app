@@ -89,7 +89,17 @@ export async function getCollectionContent(
 
 		const data = await req.json();
 
-		return data?.docs || [];
+		// Move external groups to the end (e.g., Scouts and Guides)
+		const sortedDocs = data?.docs?.sort((a: any, b: any) => {
+			const aIsExternal = ['scouts', 'guides'].includes(a.slug);
+			const bIsExternal = ['scouts', 'guides'].includes(b.slug);
+
+			if (aIsExternal && !bIsExternal) return 1;
+			if (!aIsExternal && bIsExternal) return -1;
+			return 0;
+		});
+
+		return sortedDocs || [];
 	} catch (error) {
 		console.error(`Error fetching ${collectionSlug} content:`, error);
 		return [];

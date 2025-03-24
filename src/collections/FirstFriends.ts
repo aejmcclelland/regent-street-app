@@ -1,6 +1,7 @@
 import { CollectionConfig } from 'payload';
-import { isSuperAdminOrAdmin } from '../access/adminAccess';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import { singletonAccess } from '@/access/singletonAccess';
+import { emailAccessConfig } from '@/access/emailAccessConfig';
 
 export const FirstFriends: CollectionConfig = {
 	slug: 'firstFriends',
@@ -12,10 +13,7 @@ export const FirstFriends: CollectionConfig = {
 		useAsTitle: 'name',
 	},
 	access: {
-		read: () => true, // Everyone can view
-		create: isSuperAdminOrAdmin, // Only superadmins and specific admins can create
-		update: isSuperAdminOrAdmin, // Restrict updates
-		delete: isSuperAdminOrAdmin, // Restrict deletion
+		...singletonAccess('firstFriends', emailAccessConfig.firstFriends),
 	},
 	fields: [
 		{

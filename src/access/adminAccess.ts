@@ -4,8 +4,8 @@ import type { Access } from 'payload';
 type AdminUser = {
 	id: string;
 	email: string;
-	roles: ('admin' | 'editor' | 'superadmin')[]; // ✅ Changed from `role` to `roles` array
-	collection: 'users'; // ✅ Changed from `admins` to `users`
+	roles: ('admin' | 'editor' | 'superadmin')[]; // Changed from `role` to `roles` array
+	collection: 'users'; // Changed from `admins` to `users`
 };
 
 // Type guard to check if req.user is an Admin
@@ -17,7 +17,7 @@ const isAdminUser = (user: any): user is AdminUser => {
 	);
 };
 
-// ✅ Superadmins & Admins can create, read, update
+// Superadmins & Admins can create, read, update
 export const isSuperAdminOrAdmin: Access = ({ req }) => {
 	return (
 		isAdminUser(req.user) &&
@@ -25,7 +25,7 @@ export const isSuperAdminOrAdmin: Access = ({ req }) => {
 	);
 };
 
-// ✅ Admins, Editors, and Superadmins
+// Admins, Editors, and Superadmins
 export const isAdminOrEditor: Access = ({ req }) => {
 	return (
 		isAdminUser(req.user) &&
@@ -35,13 +35,13 @@ export const isAdminOrEditor: Access = ({ req }) => {
 	);
 };
 
-// ✅ Superadmins only
+// Superadmins only
 export const isSuperAdmin: Access = ({ req }) => {
 	console.log('Checking Super Admin Access: ', req.user);
 	return isAdminUser(req.user) && req.user.roles.includes('superadmin');
 };
 
-// ✅ Prevents deleting the last Super Admin
+// Prevents deleting the last Super Admin
 export const canDeleteAdmin: Access = async ({ req, id }) => {
 	if (!id) {
 		return true;

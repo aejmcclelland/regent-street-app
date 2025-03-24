@@ -54,6 +54,7 @@ export const Children: CollectionConfig = {
 				'beavers',
 				'cubs',
 				'squirrels',
+				'quest',
 			] as const,
 			required: false,
 		},

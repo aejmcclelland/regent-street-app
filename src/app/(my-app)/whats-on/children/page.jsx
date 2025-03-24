@@ -21,7 +21,7 @@ export default async function ChildrenPage() {
             <Banner
                 publicId="https://res.cloudinary.com/dqeszgo28/image/upload/v1742659176/childrens_service_qbwnt3.jpg"
                 alt="Children's Ministry"
-                title="Childrens Ministry"
+                title="Children's Ministry"
                 textPosition="bottomLeft"
                 fontColour="two"
             />

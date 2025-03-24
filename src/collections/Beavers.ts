@@ -1,5 +1,6 @@
 import { CollectionConfig } from 'payload';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import { singletonAccess } from '@/access/singletonAccess';
 
 export const Beavers: CollectionConfig = {
 	slug: 'beavers',

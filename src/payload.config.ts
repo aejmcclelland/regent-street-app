@@ -27,6 +27,7 @@ import { Rainbows } from './collections/Rainbows';
 import { Beavers } from './collections/Beavers';
 import { Cubs } from './collections/Cubs';
 import { Squirrels } from './collections/Squirrels';
+import { Quest } from './collections/Quest';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -43,6 +44,7 @@ export default buildConfig({
 		Users,
 		Media,
 		Sundays,
+		Quest,
 		OurHistory,
 		Team,
 		Children,
