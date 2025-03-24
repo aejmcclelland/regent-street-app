@@ -1,28 +1,18 @@
 import { CollectionConfig } from 'payload';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import { singletonAccess } from '@/access/singletonAccess';
+import { emailAccessConfig } from '@/access/emailAccessConfig';
+import { shouldShowAdminCollection } from '@/access/canViewCollectionInAdmin';
 
 export const Beavers: CollectionConfig = {
 	slug: 'beavers',
 	admin: {
 		useAsTitle: 'name',
+		hidden: ({ user }) =>
+			!shouldShowAdminCollection('beavers', user?.email, user?.roles),
 	},
 	access: {
-		read: () => true,
-		create: ({ req }) => {
-			const user = req.user;
-			return (
-				user?.roles?.includes('superadmin') ||
-				user?.email === 'beaversleader@example.com'
-			);
-		},
-		update: ({ req }) => {
-			const user = req.user;
-			return (
-				user?.roles?.includes('superadmin') ||
-				user?.email === 'beaversleader@example.com'
-			);
-		},
+		...singletonAccess('beavers', emailAccessConfig.beavers),
 	},
 	fields: [
 		{

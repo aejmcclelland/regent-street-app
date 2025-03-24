@@ -1,43 +1,56 @@
 import type { CollectionConfig } from 'payload';
-import type { UserWithRoles } from '@/types'; // Ensure this is correctly imported
-import { isSuperAdminOrAdmin, isSuperAdmin } from '../access/adminAccess';
+import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import { singletonAccess } from '@/access/singletonAccess';
+import { emailAccessConfig } from '@/access/emailAccessConfig';
+import { shouldShowAdminCollection } from '@/access/canViewCollectionInAdmin';
 
 export const Quest: CollectionConfig = {
 	slug: 'quest',
 	labels: {
-		singular: 'quest',
-		plural: 'quest groups',
+		singular: 'Quest',
+		plural: 'Quest Groups',
 	},
 	admin: {
 		useAsTitle: 'name',
+		hidden: ({ user }) =>
+			!shouldShowAdminCollection('quest', user?.email, user?.roles),
 	},
 	access: {
-		read: () => true, // Everyone can view
-		create: isSuperAdminOrAdmin, // Only superadmins can create new groups
-		update: ({ req }) => {
-			if (!req.user) return false;
-			const user = req.user as UserWithRoles;
-			if (isSuperAdmin({ req })) return true;
-			if (user.roles?.includes('admin')) {
-				return {
-					$or: [{ leaderId: { in: [user.id] } }],
-				};
-			}
-			return false;
-		},
-		delete: isSuperAdmin, // Superadmins only
+		...singletonAccess('quest', emailAccessConfig.quest),
 	},
 	fields: [
-		{ name: 'name', type: 'text', required: true },
-		{ name: 'description', type: 'textarea', required: true },
-		{ name: 'image', type: 'upload', relationTo: 'media', required: false },
-		{ name: 'slug', type: 'text', required: true },
+		{
+			name: 'name',
+			type: 'text',
+			required: true,
+		},
+		{
+			name: 'description',
+			type: 'richText',
+			required: true,
+			editor: lexicalEditor(),
+		},
+		{
+			name: 'image',
+			type: 'upload',
+			relationTo: 'media',
+			required: false,
+		},
+		{
+			name: 'slug',
+			type: 'text',
+			required: true,
+			unique: true,
+			admin: {
+				position: 'sidebar',
+			},
+		},
 		{
 			name: 'leaderId',
 			type: 'relationship',
 			relationTo: 'users',
 			required: false,
-			hasMany: true,
+			hasMany: true, // Multiple leaders can be assigned
 		},
 		{
 			name: 'banner',
@@ -50,5 +63,3 @@ export const Quest: CollectionConfig = {
 		},
 	],
 };
-
-export default Quest;

@@ -1,4 +1,6 @@
 import type { CollectionConfig } from 'payload';
+import { isSuperAdminOnly } from '@/access/isSuperAdminOnly';
+
 import {
 	isSuperAdminOrAdmin,
 	isAdminOrEditor,
@@ -9,11 +11,12 @@ export const Team: CollectionConfig = {
 	slug: 'team',
 	admin: {
 		useAsTitle: 'name',
+		hidden: ({ user }) => !isSuperAdminOnly({ roles: user?.roles }),
 	},
 	access: {
 		read: () => true,
-		create: isSuperAdminOrAdmin,
-		update: isAdminOrEditor,
+		create: isSuperAdmin,
+		update: isSuperAdmin,
 		delete: isSuperAdmin,
 	},
 	fields: [

@@ -1,5 +1,8 @@
 import { CollectionConfig } from 'payload';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import { singletonAccess } from '@/access/singletonAccess';
+import { emailAccessConfig } from '@/access/emailAccessConfig';
+import { shouldShowAdminCollection } from '@/access/canViewCollectionInAdmin';
 
 export const Squirrels: CollectionConfig = {
 	slug: 'squirrels',
@@ -9,24 +12,11 @@ export const Squirrels: CollectionConfig = {
 	},
 	admin: {
 		useAsTitle: 'name',
-		description: 'Squirrels group details including leaders and images',
+		hidden: ({ user }) =>
+			!shouldShowAdminCollection('squirrels', user?.email, user?.roles),
 	},
 	access: {
-		read: () => true,
-		create: ({ req }) => {
-			const user = req.user;
-			return (
-				user?.roles?.includes('superadmin') ||
-				user?.email === 'squirrelleader@example.com'
-			);
-		},
-		update: ({ req }) => {
-			const user = req.user;
-			return (
-				user?.roles?.includes('superadmin') ||
-				user?.email === 'squirrelleader@example.com'
-			);
-		},
+		...singletonAccess('squirrels', emailAccessConfig.squirrels),
 	},
 	fields: [
 		{

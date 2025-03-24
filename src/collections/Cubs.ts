@@ -1,27 +1,18 @@
 import { CollectionConfig } from 'payload';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import { singletonAccess } from '@/access/singletonAccess';
+import { emailAccessConfig } from '@/access/emailAccessConfig';
+import { shouldShowAdminCollection } from '@/access/canViewCollectionInAdmin';
 
 export const Cubs: CollectionConfig = {
 	slug: 'cubs',
 	admin: {
 		useAsTitle: 'name',
+		hidden: ({ user }) =>
+			!shouldShowAdminCollection('cubs', user?.email, user?.roles),
 	},
 	access: {
-		read: () => true,
-		create: ({ req }) => {
-			const user = req.user;
-			return (
-				user?.roles?.includes('superadmin') ||
-				user?.email === 'cubsleader@example.com'
-			);
-		},
-		update: ({ req }) => {
-			const user = req.user;
-			return (
-				user?.roles?.includes('superadmin') ||
-				user?.email === 'cubsleader@example.com'
-			);
-		},
+		...singletonAccess('cubs', emailAccessConfig.cubs),
 	},
 	fields: [
 		{

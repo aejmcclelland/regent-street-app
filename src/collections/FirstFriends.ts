@@ -2,6 +2,7 @@ import { CollectionConfig } from 'payload';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import { singletonAccess } from '@/access/singletonAccess';
 import { emailAccessConfig } from '@/access/emailAccessConfig';
+import { shouldShowAdminCollection } from '@/access/canViewCollectionInAdmin';
 
 export const FirstFriends: CollectionConfig = {
 	slug: 'firstFriends',
@@ -11,6 +12,8 @@ export const FirstFriends: CollectionConfig = {
 	},
 	admin: {
 		useAsTitle: 'name',
+		hidden: ({ user }) =>
+			!shouldShowAdminCollection('firstFriends', user?.email, user?.roles),
 	},
 	access: {
 		...singletonAccess('firstFriends', emailAccessConfig.firstFriends),

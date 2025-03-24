@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload';
-import type { UserWithRoles } from '@/types'; // Ensure this is correctly imported
-import { isSuperAdminOrAdmin, isSuperAdmin } from '../access/adminAccess';
+import { singletonAccess } from '@/access/singletonAccess';
+import { emailAccessConfig } from '@/access/emailAccessConfig';
+import { shouldShowAdminCollection } from '@/access/canViewCollectionInAdmin';
 
 export const SundaySchool: CollectionConfig = {
 	slug: 'sundaySchool',
@@ -10,22 +11,11 @@ export const SundaySchool: CollectionConfig = {
 	},
 	admin: {
 		useAsTitle: 'name',
+		hidden: ({ user }) =>
+			!shouldShowAdminCollection('sundaySchool', user?.email, user?.roles),
 	},
 	access: {
-		read: () => true, // Everyone can view
-		create: isSuperAdminOrAdmin, // Only superadmins can create new groups
-		update: ({ req }) => {
-			if (!req.user) return false;
-			const user = req.user as UserWithRoles;
-			if (isSuperAdmin({ req })) return true;
-			if (user.roles?.includes('admin')) {
-				return {
-					$or: [{ leaderId: { in: [user.id] } }],
-				};
-			}
-			return false;
-		},
-		delete: isSuperAdmin, // Superadmins only
+		...singletonAccess('sundaySchool', emailAccessConfig.rainbows),
 	},
 	fields: [
 		{ name: 'name', type: 'text', required: true },

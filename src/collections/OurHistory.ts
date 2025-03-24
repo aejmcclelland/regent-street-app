@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload';
+import { isSuperAdminOnly } from '@/access/isSuperAdminOnly';
 import {
 	isAdminOrEditor,
 	isSuperAdminOrAdmin,
@@ -9,11 +10,12 @@ export const OurHistory: CollectionConfig = {
 	slug: 'our-history',
 	admin: {
 		useAsTitle: 'title',
+		hidden: ({ user }) => !isSuperAdminOnly({ roles: user?.roles }),
 	},
 	access: {
 		read: () => true,
-		create: isSuperAdminOrAdmin,
-		update: isAdminOrEditor,
+		create: isSuperAdmin,
+		update: isSuperAdmin,
 		delete: isSuperAdmin,
 	},
 	labels: {

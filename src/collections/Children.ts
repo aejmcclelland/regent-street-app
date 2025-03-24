@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload';
 import { isSuperAdmin } from '../access/adminAccess';
+import { isSuperAdminOnly } from '@/access/isSuperAdminOnly';
 
 export const Children: CollectionConfig = {
 	slug: 'children',
@@ -9,6 +10,7 @@ export const Children: CollectionConfig = {
 	},
 	admin: {
 		useAsTitle: 'name',
+		hidden: ({ user }) => !isSuperAdminOnly({ roles: user?.roles }),
 	},
 	access: {
 		read: () => true,
