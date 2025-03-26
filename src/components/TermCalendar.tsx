@@ -1,5 +1,5 @@
 // components/TermCalendar.tsx
-"use client";
+
 import { format } from "date-fns";
 type TermCalendarProps = {
   calendar: {
