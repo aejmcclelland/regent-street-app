@@ -17,6 +17,16 @@ export const Sundays: CollectionConfig = {
 	},
 	fields: [
 		{ name: 'title', type: 'text', required: true },
+		{
+			name: 'slug',
+			type: 'text',
+			required: true,
+			unique: true,
+			admin: {
+				position: 'sidebar',
+				description: 'Used in the URL to reference this Sunday entry (e.g., "this-sunday")',
+			},
+		},
 		{ name: 'date', type: 'date', required: true },
 		{ name: 'description', type: 'richText' },
 		{

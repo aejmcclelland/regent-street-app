@@ -53,7 +53,7 @@ export async function getSingleCollectionItem(
 		}
 
 		const data = await req.json();
-
+		console.log('Received data:', data); //temp
 		// Return the first document found or null if not found
 		return data?.docs?.[0] || null;
 	} catch (error) {

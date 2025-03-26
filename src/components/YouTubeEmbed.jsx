@@ -1,14 +1,25 @@
 "use client";
+import { useEffect, useState } from 'react';
+import { getSingleCollectionItem } from '@/lib/payload';
 
-//https://www.youtube.com/watch?v=NoIfLsTfPH0
+export default function YouTubeEmbed() {
+    const [sunday, setSunday] = useState(null);
 
-export default function YouTubeEmbed({ videoId }) {
+    useEffect(() => {
+        const fetchSunday = async () => {
+            const data = await getSingleCollectionItem('sundays', 'this-sunday');
+            setSunday(data);
+        };
+
+        fetchSunday();
+    }, []);
+
+    if (!sunday) return <p className="text-center text-white">Loading Sunday content...</p>;
+
     return (
-        <section className="bg-gray-900 py-12 px-6 text-white"> {/* Section Background */}
+        <section className="bg-gray-900 py-12 px-6 text-white">
             <div className="container mx-auto max-w-4xl text-center">
                 <h2 className="text-4xl font-bold text-white mb-6">Latest Service</h2>
-
-                {/* Centered YouTube Video */}
                 {sunday.youtubeVideoId && (
                     <div className="flex justify-center">
                         <div className="relative w-full max-w-3xl h-[250px] md:h-[300px] lg:h-[350px]">
