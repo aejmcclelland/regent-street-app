@@ -74,10 +74,13 @@ export async function getCollectionContent(
 
 		const params = new URLSearchParams({
 			limit: limit.toString(),
-			depth: '3',
+			depth: '4',
+			sort: 'positionOrder',
 		});
 
-		const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/${collectionSlug}?limit=${limit}&depth=3&sort=positionOrder`;
+		const apiUrl = `${
+			process.env.NEXT_PUBLIC_SERVER_URL
+		}/api/${collectionSlug}?${params.toString()}`;
 
 		const req = await fetch(apiUrl, { cache: 'no-store' });
 
@@ -91,8 +94,8 @@ export async function getCollectionContent(
 
 		// Move external groups to the end (e.g., Scouts and Guides)
 		const sortedDocs = data?.docs?.sort((a: any, b: any) => {
-			const aIsExternal = ['scouts', 'guides'].includes(a.slug);
-			const bIsExternal = ['scouts', 'guides'].includes(b.slug);
+			const aIsExternal = ['scouting', 'guides'].includes(a.slug);
+			const bIsExternal = ['scouting', 'guides'].includes(b.slug);
 
 			if (aIsExternal && !bIsExternal) return 1;
 			if (!aIsExternal && bIsExternal) return -1;

@@ -35,8 +35,8 @@ export default function GroupCard({ group }: { group: Group }) {
     ? group.subgroups
     : Object.values(group.subgroups || {});
 
-    console.log("Subgroups:", group.subgroups);
-
+    console.log("Full group object:", group);
+    
     return (
         <div className="card bg-base-100 shadow-md border border-gray-200">
             {imageToDisplay && (

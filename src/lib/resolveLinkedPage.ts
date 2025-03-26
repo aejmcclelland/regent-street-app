@@ -19,7 +19,7 @@ export async function resolveLinkedPage({
 		return linkedEntry || mainEntry;
 	}
 
-	// ✅ If not found in children, attempt to fetch directly from other known collections
+	// If not found in children, attempt to fetch directly from other known collections
 	const fallbackCollections = [
 		'squirrels',
 		'cubs',

@@ -4,7 +4,7 @@ import ChildrenCard from '@/components/ChildrenCard';
 import GroupCard from '@/components/GroupCard';
 
 export const groupCardComponents: Record<string, React.FC<{ group: any }>> = {
-	scouts: GroupCard,
+	scouting: GroupCard,
 	guides: GroupCard,
 	// Add more overrides as needed
 	default: ChildrenCard,

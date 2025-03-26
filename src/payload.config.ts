@@ -19,6 +19,7 @@ import { Youth } from './collections/Youth';
 import { Children } from './collections/Children';
 import { FirstFriends } from './collections/FirstFriends';
 import { Guides } from './collections/Guides';
+import { Scouting } from './collections/Scouting';
 import { Scouts } from './collections/Scouts';
 import { HolidayBibleClub } from './collections/HolidayBibleClub';
 import { SundaySchool } from './collections/SundaySchool';
@@ -43,6 +44,7 @@ export default buildConfig({
 	collections: [
 		Users,
 		Media,
+		Scouts,
 		Sundays,
 		Quest,
 		OurHistory,
@@ -51,7 +53,7 @@ export default buildConfig({
 		Youth,
 		FirstFriends,
 		Guides,
-		Scouts,
+		Scouting,
 		HolidayBibleClub,
 		SundaySchool,
 		Brownies,
