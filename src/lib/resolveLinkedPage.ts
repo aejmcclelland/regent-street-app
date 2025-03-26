@@ -16,7 +16,14 @@ export async function resolveLinkedPage({
 			mainEntry.linkedPage.relationTo,
 			slug
 		);
-		return linkedEntry || mainEntry;
+		return {
+			...mainEntry,
+			features: mainEntry.features ?? [],
+			description: linkedEntry?.description || mainEntry.description,
+			image: linkedEntry?.image || mainEntry.image,
+			termDates: linkedEntry?.termDates || [],
+			leaderId: linkedEntry?.leaderId || [],
+		};
 	}
 
 	// If not found in children, attempt to fetch directly from other known collections

@@ -61,5 +61,33 @@ export const FirstFriends: CollectionConfig = {
 				position: 'sidebar',
 			},
 		},
+		{
+			name: 'termDates',
+			type: 'array',
+			label: 'Term Calendars',
+			fields: [
+				{
+					name: 'termName',
+					type: 'text',
+					label: 'Term Name',
+				},
+				{
+					name: 'weeks',
+					type: 'array',
+					label: 'Weeks',
+					fields: [
+						{
+							name: 'date',
+							type: 'date',
+						},
+						{
+							name: 'note',
+							type: 'text',
+							required: false,
+						},
+					],
+				},
+			],
+		},
 	],
 };

@@ -2,6 +2,13 @@ import { resolveLinkedPage } from "@/lib/resolveLinkedPage";
 import { RichText } from "@/components/RichText";
 import Image from "next/image";
 import Link from "next/link";
+import TermCalendar from '@/components/TermCalendar';
+
+const featureComponents: Record<string, React.FC<{ data: any }>> = {
+    calendar: ({ data }) => <TermCalendar calendar={data.termDates} />,
+    // gallery: ({ data }) => <Gallery images={data.gallery} />,
+    // form: ({ data }) => <PermissionForm form={data.permissionForm} />,
+};
 
 export default async function ChildrenGroupPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
@@ -40,7 +47,7 @@ export default async function ChildrenGroupPage({ params }: { params: Promise<{ 
                     </div>
                 </div>
             </div>
-
+            
             {Array.isArray(displayData.subgroups) && displayData.subgroups.length > 0 && (
                 <div className="mt-6">
                     <ul className="menu menu-vertical lg:menu-horizontal menu-lg bg-base-200 rounded-box">
@@ -55,6 +62,15 @@ export default async function ChildrenGroupPage({ params }: { params: Promise<{ 
                     </ul>
                 </div>
             )}
+
+            {Array.isArray(displayData.features) && displayData.features.map((featureKey: string) => {
+                const FeatureComponent = featureComponents[featureKey];
+                return FeatureComponent ? (
+                    <div key={featureKey} className="mt-10">
+                        <FeatureComponent data={displayData} />
+                    </div>
+                ) : null;
+            })}
 
             <Link href="/whats-on/children" className="btn btn-soft btn-primary mt-6">  
                 ← Back to All Children’s Ministry

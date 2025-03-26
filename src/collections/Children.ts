@@ -55,5 +55,19 @@ export const Children: CollectionConfig = {
 			] as const,
 			required: false,
 		},
+		{
+			name: 'features',
+			type: 'select',
+			label: 'Page Features',
+			hasMany: true,
+			options: [
+				{ label: 'Calendar', value: 'calendar' },
+				{ label: 'Image Gallery', value: 'gallery' },
+				{ label: 'Permission Form', value: 'form' },
+			],
+			admin: {
+				description: 'Select which features to display on this group’s page.',
+			},
+		},
 	],
 };
