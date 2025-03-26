@@ -121,7 +121,9 @@ export async function getGlobalContent(globalSlug: string) {
 		const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/${globalSlug}`;
 
 		// Fetch data from Payload REST API
-		const req = await fetch(apiUrl, { cache: 'no-store' });
+		const req = await fetch(apiUrl, {
+			next: { revalidate: 60 }, // Cache for 1 minute
+		});
 
 		if (!req.ok) {
 			throw new Error(`Failed to fetch ${globalSlug} data: ${req.statusText}`);
