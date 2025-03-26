@@ -2,6 +2,8 @@ import { getCollectionContent } from "lib/payload";
 import Banner from "@/components/Banner";
 import { groupCardComponents } from "@/components/groupCardComponents";
 
+export const revalidate = 60; // Enables ISR (static generation with revalidation)
+
 function extractPlainTextFromLexical(description) {
     if (!description || typeof description !== "object" || !Array.isArray(description.root?.children)) return "";
 
