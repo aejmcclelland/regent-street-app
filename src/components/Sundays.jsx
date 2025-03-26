@@ -18,7 +18,7 @@ export default function Sundays() {
                 </p>
 
                 {/* YouTube Embed */}
-                <YouTubeEmbed videoId="NoIfLsTfPH0" />
+                <YouTubeEmbed videoId="P0cZXkVbMbw" />
 
                 {/* Latest Events Section */}
                 <LatestEvents />
@@ -41,3 +41,5 @@ export default function Sundays() {
         </section>
     );
 }
+
+https://www.youtube.com/live/P0cZXkVbMbw?feature=shared

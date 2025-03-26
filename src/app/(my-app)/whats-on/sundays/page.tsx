@@ -13,8 +13,6 @@ interface SundaysItem {
 export default async function Sundays() {
     const sundaysContent = (await getCollectionContent("sundays")) as SundaysItem[]; 
 
-    console.log('here is the NEXT_PUBLIC_SERVER_URL:', process.env.NEXT_PUBLIC_SERVER_URL);
-
     console.log("Fetched Sundays Content:", JSON.stringify(sundaysContent, null, 2));
 
     return (
