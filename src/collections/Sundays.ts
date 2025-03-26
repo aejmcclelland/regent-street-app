@@ -28,6 +28,16 @@ export const Sundays: CollectionConfig = {
 				position: 'sidebar',
 			},
 		},
+		{
+			name: 'youtubeVideoId',
+			type: 'text',
+			label: 'YouTube Video ID',
+			required: false,
+			admin: {
+				description:
+					'Paste the video ID from the YouTube URL (e.g., "dQw4w9WgXcQ")',
+			},
+		},
 	],
 };
 

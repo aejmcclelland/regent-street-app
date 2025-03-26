@@ -9,18 +9,20 @@ export default function YouTubeEmbed({ videoId }) {
                 <h2 className="text-4xl font-bold text-white mb-6">Latest Service</h2>
 
                 {/* Centered YouTube Video */}
-                <div className="flex justify-center">
-                    <div className="relative w-full max-w-3xl h-[250px] md:h-[300px] lg:h-[350px]">
-                        <iframe
-                            className="w-full h-full rounded-lg shadow-lg"
-                            src={`https://www.youtube.com/embed/${videoId}`}
-                            title="Latest Sunday Service"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            referrerPolicy="strict-origin-when-cross-origin"
-                            allowFullScreen
-                        ></iframe>
+                {sunday.youtubeVideoId && (
+                    <div className="flex justify-center">
+                        <div className="relative w-full max-w-3xl h-[250px] md:h-[300px] lg:h-[350px]">
+                            <iframe
+                                className="w-full h-full rounded-lg shadow-lg"
+                                src={`https://www.youtube.com/embed/${sunday.youtubeVideoId}`}
+                                title="Sunday Service"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                referrerPolicy="strict-origin-when-cross-origin"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
         </section>
     );
