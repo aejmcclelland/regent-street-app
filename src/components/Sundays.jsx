@@ -18,7 +18,7 @@ export default function Sundays() {
                 </p>
 
                 {/* YouTube Embed */}
-                <YouTubeEmbed videoId="P0cZXkVbMbw" />
+                <YouTubeEmbed />
 
                 {/* Latest Events Section */}
                 <LatestEvents />

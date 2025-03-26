@@ -12,7 +12,7 @@ export default function Welcome() {
                     Experience a welcoming community rooted in faith and love.
                 </p>
                 <a
-                    href="/about"
+                    href="/who-we-are/values"
                     className="mt-6 inline-block px-6 py-3 bg-secondary text-white font-semibold rounded-lg shadow-md hover:bg-primary-focus transition"
                 >
                     Learn More
