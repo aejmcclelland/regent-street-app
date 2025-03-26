@@ -44,7 +44,9 @@ export async function getSingleCollectionItem(
 		const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/${collectionSlug}?where[slug][equals]=${slug}&depth=3`;
 
 		// Fetch data from Payload REST API
-		const req = await fetch(apiUrl, { cache: 'no-store' });
+		const req = await fetch(apiUrl, {
+			next: { revalidate: 60 }, // Cache for 1 minute
+		});
 
 		if (!req.ok) {
 			throw new Error(
@@ -53,8 +55,7 @@ export async function getSingleCollectionItem(
 		}
 
 		const data = await req.json();
-		console.log('Received data:', data); //temp
-		// Return the first document found or null if not found
+
 		return data?.docs?.[0] || null;
 	} catch (error) {
 		console.error(
@@ -82,7 +83,9 @@ export async function getCollectionContent(
 			process.env.NEXT_PUBLIC_SERVER_URL
 		}/api/${collectionSlug}?${params.toString()}`;
 
-		const req = await fetch(apiUrl, { cache: 'no-store' });
+		const req = await fetch(apiUrl, {
+			next: { revalidate: 60 }, // Cache for 1 minute
+		});
 
 		if (!req.ok) {
 			throw new Error(
