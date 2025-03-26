@@ -42,4 +42,3 @@ export default function Sundays() {
     );
 }
 
-https://www.youtube.com/live/P0cZXkVbMbw?feature=shared
