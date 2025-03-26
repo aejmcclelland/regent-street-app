@@ -72,7 +72,7 @@ export default buildConfig({
 	db: mongooseAdapter({
 		url: process.env.DATABASE_URI || '',
 
-		autoPluralization: false, // ✅ Disable auto-pluralization
+		autoPluralization: false, // ady Disable auto-pluralization
 	}),
 	sharp,
 	plugins: [],
