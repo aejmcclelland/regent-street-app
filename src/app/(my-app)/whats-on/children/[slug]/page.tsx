@@ -65,11 +65,19 @@ export default async function ChildrenGroupPage({ params }: { params: Promise<{ 
 
             {Array.isArray(displayData.features) && displayData.features.map((featureKey: string) => {
                 const FeatureComponent = featureComponents[featureKey];
-                return FeatureComponent ? (
-                    <div key={featureKey} className="mt-10">
-                        <FeatureComponent data={displayData} />
-                    </div>
-                ) : null;
+                if (!FeatureComponent) return null;
+
+                const isCalendar = featureKey === 'calendar';
+                return (
+                    <div
+  key={featureKey}
+  className={`mt-10 ${isCalendar ? 'flex justify-center' : ''}`}
+>
+  <div className={isCalendar ? 'w-full sm:w-2/3 lg:w-1/3' : ''}>
+    <FeatureComponent data={displayData} />
+  </div>
+</div>
+                );
             })}
 
             <Link href="/whats-on/children" className="btn btn-soft btn-primary mt-6">  
