@@ -8,7 +8,7 @@ export default function FeaturedContent() {
 
                 <div className="p-6 bg-base-100 text-gray-900 rounded-lg shadow-lg">
                     <h3 className="text-xl font-semibold">Thought for the Week</h3>
-                    <p className="mt-2">"Faith is taking the first step even when you don’t see the whole staircase." – Martin Luther King Jr.</p>
+                    <p className="mt-2">"Commit to the LORD whatever you do, and he will establish your plans" (Proverbs 16:3)</p>
                 </div>
             </div>
         </section>
