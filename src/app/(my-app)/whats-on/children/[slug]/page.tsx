@@ -35,9 +35,12 @@ export default async function ChildrenGroupPage({
 		<>
 			{/* Top Banner */}
 			<Banner
-				publicId={displayData.image?.cloudinaryUrl}
+				publicId={
+					displayData.banner?.cloudinaryUrl ??
+					'https://res.cloudinary.com/dqeszgo28/image/upload/v1739741911/regentStreetChurch/church-banner_nu1vvw.jpg'
+				}
 				alt={
-					displayData.image?.alt ??
+					displayData.banner?.alt ??
 					displayData.name ??
 					"Children's ministry image"
 				}
