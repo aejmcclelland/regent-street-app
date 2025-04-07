@@ -8,12 +8,12 @@ import About from "../../components/About";
 export default function Home() {
 	const heroImages = [
 		{
-			src: "https://res.cloudinary.com/dqeszgo28/image/upload/v1742659729/church_service_dlllqn.jpg",
+			src: "https://res.cloudinary.com/dqeszgo28/image/upload/t_sundays/v1742659729/regentStreetChurch/church_service_dlllqn.jpg",
 			alt: "Hero Image 1",
 			caption: "Welcome to Regent Street Presbyterian Church",
 		},
 		{
-			src: "https://res.cloudinary.com/dqeszgo28/image/upload/v1742659729/kids_candyfloss_qmlxe9.jpg",
+			src: "https://res.cloudinary.com/dqeszgo28/image/upload/t_sundays/v1742659729/regentStreetChurch/kids_candyfloss_qmlxe9.jpg",
 			alt: "Hero Image 2",
 			caption: "Join Us Every Sunday",
 		},

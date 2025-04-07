@@ -15,7 +15,7 @@ export const Media: CollectionConfig = {
 		{
 			name: 'cloudinaryUrl',
 			type: 'text',
-			required: false,
+			required: true,
 			admin: {
 				description: 'Paste the Cloudinary URL for this image.',
 			},

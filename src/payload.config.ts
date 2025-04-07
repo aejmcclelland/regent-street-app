@@ -1,8 +1,6 @@
 import 'dotenv/config';
 import { mongooseAdapter } from '@payloadcms/db-mongodb';
-import {
-	lexicalEditor,
-} from '@payloadcms/richtext-lexical';
+import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import path from 'path';
 import { buildConfig } from 'payload';
 import { fileURLToPath } from 'url';
@@ -27,6 +25,7 @@ import { Beavers } from './collections/Beavers';
 import { Cubs } from './collections/Cubs';
 import { Squirrels } from './collections/Squirrels';
 import { Quest } from './collections/Quest';
+import { FieldsOfLife } from './collections/FieldsOfLife';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -44,6 +43,7 @@ export default buildConfig({
 		Media,
 		Scouts,
 		Sundays,
+		FieldsOfLife,
 		Quest,
 		OurHistory,
 		Team,

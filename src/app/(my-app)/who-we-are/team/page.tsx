@@ -2,17 +2,32 @@ import Banner from "@components/Banner";
 import Image from "next/image";
 import { getCollectionContent } from "lib/payload"; //Import function to fetch team members
 
-export default async function OurTeam() {
-    const teamMembers = await getCollectionContent("team", 10); //Fetch up to 10 team members
+interface TeamMember {
+    id: string;
+    name: string;
+    role?: string;
+    bio?: any;
+    image?: {
+        cloudinaryUrl?: string;
+        alt?: string;
+        filename?: string;
+        url?: string;
+    };
+    banner?: {
+        cloudinaryUrl?: string;
+        alt?: string;
+    };
+}
 
-    console.log("Team Members Data:", JSON.stringify(teamMembers, null, 2));
+export default async function OurTeam() {
+    const teamMembers = (await getCollectionContent("team", 10)) as TeamMember[]; //Fetch up to 10 team members
 
     return (
         <div className="w-full">
             {/* Banner Section */}
             <Banner
-                publicId="regentStreetChurch/church-banner.png"
-                alt="Who's Who?"
+                publicId={teamMembers[0]?.banner?.cloudinaryUrl || "regentStreetChurch/church-banner.png"}
+                alt={teamMembers[0]?.banner?.alt || "Who's Who?"}
                 title="Who's Who?"
                 textPosition="bottomRight"
                 fontColour="one"
@@ -46,17 +61,21 @@ export default async function OurTeam() {
 
                                     {/* Bio (Properly formatted Rich Text) */}
                                     <p className="text-base-content mt-3">
-                                        {member.bio?.root?.children
-                                            ?.map((block) =>
-                                                block.children
-                                                    ?.map((child) =>
-                                                        child.children
-                                                            ? child.children.map((textNode) => textNode.text).join(" ")
-                                                            : child.text
-                                                    )
-                                                    .join(" ")
-                                            )
-                                            .join(" ") || "No bio available"}
+                                        {Array.isArray(member.bio?.root?.children)
+                                            ? member.bio.root.children
+                                                  .map((block: any) =>
+                                                      Array.isArray(block.children)
+                                                          ? block.children
+                                                                .map((child: any) =>
+                                                                    Array.isArray(child.children)
+                                                                        ? child.children.map((textNode: any) => textNode.text).join(" ")
+                                                                        : child.text
+                                                                )
+                                                                .join(" ")
+                                                          : ""
+                                                  )
+                                                  .join(" ")
+                                            : "No bio available"}
                                     </p>
                                 </div>
                             ))

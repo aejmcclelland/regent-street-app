@@ -2,8 +2,6 @@ import { getCollectionContent } from "lib/payload";
 import Banner from "@/components/Banner";
 import { groupCardComponents } from "@/components/groupCardComponents";
 
-export const revalidate = 60; // Enables ISR (static generation with revalidation)
-
 function extractPlainTextFromLexical(description) {
     if (!description || typeof description !== "object" || !Array.isArray(description.root?.children)) return "";
 
@@ -18,10 +16,10 @@ export default async function ChildrenPage() {
     const childrenGroups = await getCollectionContent("children", 10, { sort: "positionOrder" }); // Fetch up to 10 groups
 
     return (
-        <div className="w-full">
-            {/* Banner */}
+        <>
+            {/* Banner Section */}
             <Banner
-                publicId="https://res.cloudinary.com/dqeszgo28/image/upload/v1742659176/childrens_service_qbwnt3.jpg"
+                publicId="https://res.cloudinary.com/dqeszgo28/image/upload/t_sundays/v1742673268/regentStreetChurch/sunday_school_nw4az0.png"
                 alt="Children's Ministry"
                 title="Children's Ministry"
                 textPosition="bottomLeft"
@@ -57,6 +55,6 @@ export default async function ChildrenPage() {
                     )}
                 </div>
             </section>
-        </div>
+        </>
     );
 }

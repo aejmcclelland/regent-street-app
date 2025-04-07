@@ -75,7 +75,7 @@ export async function getCollectionContent(
 
 		const params = new URLSearchParams({
 			limit: limit.toString(),
-			depth: '4',
+			depth: '3',
 			sort: 'positionOrder',
 		});
 

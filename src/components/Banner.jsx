@@ -1,6 +1,6 @@
 "use client";
 
-import { CldImage } from "next-cloudinary";
+import Image from "next/image";
 
 export default function Banner({ publicId, alt, title, textPosition = "center", fontColour = "one" }) {
     // Map text position to Tailwind classes
@@ -21,19 +21,18 @@ export default function Banner({ publicId, alt, title, textPosition = "center", 
     };
 
     return (
-        <div className="relative w-full h-[300px]">
+        <div className="relative w-full h-[400px]">
             <div className="absolute inset-0 bg-black/40 z-10"></div>
 
-            {/* Conditional Cloudinary Image */}
+            {/* Conditional next / Image */}
             {publicId ? (
-                <CldImage
-                    src={publicId}
+                <Image
+                    src={publicId.startsWith('http') ? publicId : `https://res.cloudinary.com/dqeszgo28/image/upload/c_fill,w_1600,h_800,g_auto,f_auto,q_auto/${publicId}`}
                     width={1600}
-                    height={500}
+                    height={800}
                     alt={alt}
-                    crop="fill"
-                    gravity="auto"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-center"
+                    priority
                 />
             ) : (
                 <div className="w-full h-full bg-gray-300" />

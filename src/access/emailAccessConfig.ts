@@ -21,5 +21,6 @@ export const emailAccessConfig = {
 	cubs: ['aejmcclelland@gmail.com'],
 	squirrels: ['aejmcclelland@gmail.com'],
 	holidayBibleClub: ['aejmcclelland@gmail.com'],
+	fieldsOfLife: ['aejmcclelland@gmail.com', 'julietroughton@hotmail.com'],
 	youth: ['aejmcclelland@gmail.com', 'julietroughton@hotmail.com'],
 };
