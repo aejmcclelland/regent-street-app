@@ -22,6 +22,7 @@
     "graphql": "^16.10.0",
     "next": "^15.3.1",
     "next-cloudinary": "^6.16.0",
+    "next@latest": "link:payloadcms/next@latest",
     "payload": "^3.33.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
