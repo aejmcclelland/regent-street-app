@@ -13,7 +13,7 @@ export default function Home() {
 			caption: "Welcome to Regent Street Presbyterian Church",
 		},
 		{
-			src: "https://res.cloudinary.com/dqeszgo28/image/upload/t_sundays/v1742659729/regentStreetChurch/kids_candyfloss_qmlxe9.jpg",
+			src: "https://res.cloudinary.com/dqeszgo28/image/upload/t_sundays/v1738409534/regentStreetChurch/praise02_sample.jpg",
 			alt: "Hero Image 2",
 			caption: "Join Us Every Sunday",
 		},

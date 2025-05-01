@@ -28,7 +28,7 @@
         "*"
       ],
       "@payload-config": [
-        "payload.config.ts"
+        "src/payload.config.ts"
       ],
       "@collections/*": [
         "./collections/*"
@@ -47,8 +47,9 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/payload.config.ts"
-, "src/components/GuidesGroupCard.jsx"  ],
+    "src/payload.config.ts",
+    "src/components/GuidesGroupCard.jsx"
+  ],
   "exclude": [
     "node_modules"
   ]

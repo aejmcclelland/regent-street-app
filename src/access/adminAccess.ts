@@ -52,23 +52,23 @@ export const canDeleteAdmin: Access = async ({ req, id }) => {
 		return false;
 	}
 
-	// ✅ Check how many superadmins exist
+	// Check how many superadmins exist
 	const { totalDocs } = await req.payload.find({
-		collection: 'users', // ✅ Changed from 'admins' to 'users'
-		where: { roles: { contains: 'superadmin' } }, // ✅ Query roles array correctly
+		collection: 'users', // Changed from 'admins' to 'users'
+		where: { roles: { contains: 'superadmin' } }, // Query roles array correctly
 		limit: 1,
 	});
 
-	// ✅ Superadmin can delete anyone (except last superadmin)
+	// Superadmin can delete anyone (except last superadmin)
 	if (req.user.roles.includes('superadmin')) {
 		return totalDocs > 1 || id !== req.user.id;
 	}
 
 	if (req.user.roles.includes('admin')) {
 		const targetAdmin = (await req.payload.findByID({
-			collection: 'users', // ✅ Ensure correct collection
+			collection: 'users', // Ensure correct collection
 			id,
-		})) as unknown as AdminUser | null; // ✅ Convert to unknown first, then to AdminUser
+		})) as unknown as AdminUser | null; // Convert to unknown first, then to AdminUser
 
 		// Prevent deleting superadmin
 		return targetAdmin?.roles?.includes('superadmin') === false;

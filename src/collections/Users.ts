@@ -1,5 +1,9 @@
 import type { CollectionConfig } from 'payload';
-import type { UserWithRoles } from '@/types'; // Ensure this is correctly imported
+import {
+	isAdminOrEditor,
+	isSuperAdminOrAdmin,
+	canDeleteAdmin,
+} from '@/access/adminAccess';
 
 export const Users: CollectionConfig = {
 	slug: 'users',
@@ -7,21 +11,12 @@ export const Users: CollectionConfig = {
 		useAsTitle: 'email',
 	},
 	auth: true,
+
 	access: {
-		read: () => true,
-		create: () => true,
-		update: ({ req }) => {
-			if (!req.user) return false; // Ensure it always returns a valid AccessResult
-			const user = req.user as UserWithRoles;
-			return user.roles?.includes('admin') || user.roles?.includes('superadmin')
-				? true
-				: false;
-		},
-		delete: ({ req }) => {
-			if (!req.user) return false;
-			const user = req.user as UserWithRoles;
-			return user.roles?.includes('superadmin') ? true : false;
-		},
+		read: isAdminOrEditor,
+		create: isSuperAdminOrAdmin,
+		update: isSuperAdminOrAdmin,
+		delete: canDeleteAdmin,
 	},
 	fields: [
 		{
