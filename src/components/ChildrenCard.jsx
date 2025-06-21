@@ -7,14 +7,18 @@ export default function ChildrenCard({ group }) {
         <div className="card bg-base-100 shadow-md border border-gray-200">
             {/* ✅ Image Top - Responsive */}
             {group.image?.cloudinaryUrl && (
-                <figure className="relative w-full h-48 overflow-hidden rounded-t-lg">
-                    <Image
-                        src={group.image.cloudinaryUrl.replace('/upload/', '/upload/c_thumb,g_face,c_fill,w_600,h_300/')}
-                        alt={group.image?.alt || group.name || "Children's group image"}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 600px"
-                        className="object-top object-cover"
-                    />
+                <figure className="relative w-full h-48 overflow-hidden rounded-t-lg bg-gray-100 flex items-center justify-center">
+                    {group.image?.cloudinaryUrl ? (
+                        <Image
+                            src={group.image.cloudinaryUrl.replace('/upload/', '/upload/c_thumb,g_face,c_fill,w_600,h_300/')}
+                            alt={group.image?.alt || group.name || "Children's group image"}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 600px"
+                            className="object-top object-cover"
+                        />
+                    ) : (
+                        <span className="text-gray-400 text-sm">No image available</span>
+                    )}
                 </figure>
             )}
 
