@@ -26,6 +26,7 @@ import { Cubs } from './collections/Cubs';
 import { Squirrels } from './collections/Squirrels';
 import { Quest } from './collections/Quest';
 import { FieldsOfLife } from './collections/FieldsOfLife';
+import { Organisations } from './collections/Organisations';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -82,6 +83,7 @@ export default buildConfig({
 		Beavers,
 		Cubs,
 		Squirrels,
+		Organisations,
 	],
 	editor: lexicalEditor({
 		features: ({ defaultFeatures }) => [...defaultFeatures],

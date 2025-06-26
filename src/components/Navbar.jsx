@@ -28,6 +28,7 @@ export default function Navbar() {
         { link: "/whats-on/children", text: "Children" },
         { link: "/whats-on/youth", text: "Youth" },
         { link: "/whats-on/adults", text: "Adults" },
+        { link: "/whats-on/organisations", text: "Organisations" },
         { link: "/whats-on/events", text: "Events" },
         { link: "/whats-on/giving", text: "Giving" },
     ];

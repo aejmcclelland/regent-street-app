@@ -23,4 +23,5 @@ export const emailAccessConfig = {
 	holidayBibleClub: ['aejmcclelland@gmail.com'],
 	fieldsOfLife: ['aejmcclelland@gmail.com', 'julietroughton@hotmail.com'],
 	youth: ['aejmcclelland@gmail.com', 'julietroughton@hotmail.com'],
+	organisations: ['aejmcclelland@gmail.com'],
 };
