@@ -28,20 +28,20 @@ export default function Navbar() {
         { link: "/whats-on/children", text: "Children" },
         { link: "/whats-on/youth", text: "Youth" },
         { link: "/whats-on/adults", text: "Adults" },
-        { link: "/whats-on/latest", text: "Latest" },
+        { link: "/whats-on/events", text: "Events" },
         { link: "/whats-on/giving", text: "Giving" },
     ];
 
-    const navigationCommunity = [
-        { link: "/community/the-link", text: "The Link" },
-        { link: "/community/fields-of-life", text: "Fields of Life" },
+    const navigationMission = [
+        { link: "/mission/the-link", text: "The Link" },
+        { link: "/mission/fields-of-life", text: "Fields of Life" },
+        { link: "/mission/street-pastors", text: "Street Pastors" },
     ];
 
     const navigationWhoWeAre = [
         { link: "/who-we-are/values", text: "Our Values" },
         { link: "/who-we-are/team", text: "Our Team" },
         { link: "/who-we-are/our-history", text: "Our History" },
-        { link: "/who-we-are/beliefs", text: "Our Beliefs" },
     ];
 
     const socialLinks = [
@@ -84,7 +84,7 @@ export default function Navbar() {
                             <ul className="hidden lg:flex gap-6 items-center text-base-content relative z-50 mt-0">
                                 <Dropdown title="Who We Are" items={navigationWhoWeAre} isScrolled={isScrolled} />
                                 <Dropdown title="What's On" items={navigationWhatsOn} isScrolled={isScrolled} />
-                                <Dropdown title="Community" items={navigationCommunity} isScrolled={isScrolled} />
+                                <Dropdown title="Mission" items={navigationMission} isScrolled={isScrolled} />
 
                                 {/* Social Media Icons (DESKTOP) */}
                                 <div className="flex items-center space-x-4 ml-9">
@@ -153,7 +153,7 @@ export default function Navbar() {
                                 isOpen={isMenuOpen}
                                 toggleMenu={toggleMenu}
                                 navigationWhatsOn={navigationWhatsOn}
-                                navigationCommunity={navigationCommunity}
+                                navigationMission={navigationMission}
                                 navigationWhoWeAre={navigationWhoWeAre}
                                 isScrolled={isScrolled}
                                 socialLinks={socialLinks}
