@@ -27,6 +27,7 @@ import { Squirrels } from './collections/Squirrels';
 import { Quest } from './collections/Quest';
 import { FieldsOfLife } from './collections/FieldsOfLife';
 import { Organisations } from './collections/Organisations';
+import { StreetPastors } from './collections/StreetPastors';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -84,6 +85,7 @@ export default buildConfig({
 		Cubs,
 		Squirrels,
 		Organisations,
+		StreetPastors,
 	],
 	editor: lexicalEditor({
 		features: ({ defaultFeatures }) => [...defaultFeatures],
