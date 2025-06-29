@@ -48,7 +48,7 @@ export default async function Sundays() {
 			<section className='bg-base-200 py-10'>
 				<div className='container mx-auto px-4 space-y-12'>
 					{/* Sunday Info + Livestream + Find Us */}
-					<div className='bg-base-100 px-6 py-8 rounded-lg shadow-md'>
+					<div className='px-6 py-8 rounded-lg'>
 						<div className='grid md:grid-cols-2 gap-6 items-stretch'>
 							{/* Left Column: Sunday + Livestream */}
 							<div className='flex flex-col justify-between h-full space-y-6 text-gray-700'>
@@ -110,7 +110,7 @@ export default async function Sundays() {
 										Regent Street Presbyterian Church, Newtownards
 									</a>
 									<p className='text-lg font-medium flex items-center gap-2'>
-										<span className="pt-1 self-start">
+										<span className='pt-1 self-start'>
 											<SlSpeech className='text-3xl text-white' />
 										</span>
 										<span>
