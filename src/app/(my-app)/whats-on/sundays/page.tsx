@@ -5,7 +5,7 @@ import { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical';
 import { IoLogoYoutube } from 'react-icons/io5';
 import { MdPlace } from 'react-icons/md';
 import IconLink from '../../../../components/IconLink';
-
+import { SlSpeech } from 'react-icons/sl';
 //Define Type for Sundays Content
 interface SundaysItem {
 	id: string;
@@ -106,17 +106,22 @@ export default async function Sundays() {
 										target='_blank'
 										rel='noopener noreferrer'
 										className='text-lg font-medium flex items-center gap-2 hover:underline'>
-										<MdPlace className='text-xl text-white' />
+										<MdPlace className='text-3xl text-white' />
 										Regent Street Presbyterian Church, Newtownards
 									</a>
-									<p>
-										Visit our{' '}
-										<a
-											href='/who-we-are/contact'
-											className='underline hover:text-white'>
-											Contact page
-										</a>{' '}
-										to find our location, map, and contact details.
+									<p className='text-lg font-medium flex items-center gap-2'>
+										<span className="pt-1 self-start">
+											<SlSpeech className='text-3xl text-white' />
+										</span>
+										<span>
+											Visit our{' '}
+											<a
+												href='/who-we-are/contact'
+												className='underline hover:text-white'>
+												Contact page
+											</a>{' '}
+											to find our location, map, and contact details.
+										</span>
 									</p>
 								</div>
 							</div>
