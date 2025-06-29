@@ -39,9 +39,7 @@ export default buildConfig({
 		importMap: {
 			baseDir: path.resolve(dirname),
 		},
-		autoLogin: process.env.NEXT_PUBLIC_ENABLE_AUTOLOGIN === 'true'
-			? {}
-			: false,
+		autoLogin: process.env.NEXT_PUBLIC_ENABLE_AUTOLOGIN === 'true' ? {} : false,
 
 		meta: {
 			// icons: [

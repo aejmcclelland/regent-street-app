@@ -43,6 +43,8 @@ export default function Navbar() {
         { link: "/who-we-are/values", text: "Our Values" },
         { link: "/who-we-are/team", text: "Our Team" },
         { link: "/who-we-are/our-history", text: "Our History" },
+        { link: "/who-we-are/contact", text: "Contact Us" },
+
     ];
 
     const socialLinks = [
