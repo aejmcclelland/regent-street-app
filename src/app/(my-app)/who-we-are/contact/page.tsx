@@ -1,5 +1,7 @@
 import Banner from '@components/Banner';
 import Image from 'next/image';
+import { FaPhone } from 'react-icons/fa6';
+import { MdOutlineEmail } from 'react-icons/md';
 import { getCollectionContent } from 'lib/payload'; //Import function to fetch team members
 
 export default async function ContactUs() {
@@ -17,23 +19,23 @@ export default async function ContactUs() {
 				<div className='max-w-4xl mx-auto space-y-6'>
 					<div className='space-y-2 bg-secondary text-secondary-content p-6 rounded-md'>
 						<h2 className='text-3xl font-bold'>Address</h2>
-						<p>48a Regent St, Newtownards BT23 4LP</p>
-						<p>
-							Phone:{' '}
+						<p className='text-xl'>48a Regent St, Newtownards BT23 4LP</p>
+						<div className='flex items-center gap-2'>
+							<FaPhone className='text-2xl text-white' />
 							<a
 								href='tel:02891822416'
-								className='text-primary hover:underline'>
+								className='text-primary text-xl hover:underline'>
 								028 9182 2416
 							</a>
-						</p>
-						<p>
-							Email:{' '}
+						</div>
+						<div className='flex items-center gap-2'>
+							<MdOutlineEmail className='text-2xl text-white' />
 							<a
 								href='mailto:regent.st@btconnect.com'
-								className='text-primary hover:underline'>
+								className='text-primary text-xl hover:underline'>
 								regent.st@btconnect.com
 							</a>
-						</p>
+						</div>
 					</div>
 					<div className='space-y-4 bg-primary text-primary-content p-6 rounded-md'>
 						<h2 className='text-3xl font-bold'>Find Us</h2>
