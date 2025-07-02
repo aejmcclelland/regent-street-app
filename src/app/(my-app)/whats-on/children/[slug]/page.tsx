@@ -1,6 +1,5 @@
 import { resolveLinkedPage } from '@/lib/resolveLinkedPage';
 import { RichText } from '@/components/RichText';
-import Image from 'next/image';
 import Link from 'next/link';
 import TermCalendar from '@/components/TermCalendar';
 import Banner from '@/components/Banner';

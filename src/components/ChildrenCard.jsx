@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ChildrenCard({ group }) {
+export default function ChildrenCard({ group, basePath = "children" }) {
     return (
         <div className="card bg-base-100 shadow-md border border-gray-200">
             {/* ✅ Image Top - Responsive */}
@@ -26,7 +26,7 @@ export default function ChildrenCard({ group }) {
                 <p className="text-gray-600">{group.description}</p>
 
                 <div className="card-actions justify-end">
-                    <Link href={`/whats-on/children/${group.slug}`} className="btn  btn-lg btn-soft btn-primary">
+                    <Link href={`/whats-on/${basePath}/${group.slug}`} className="btn  btn-lg btn-soft btn-primary">
                         Learn More
                     </Link>
                 </div>

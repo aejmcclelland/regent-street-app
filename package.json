@@ -13,7 +13,7 @@
     "@payloadcms/db-mongodb": "^3.43.0",
     "@payloadcms/next": "^3.43.0",
     "@payloadcms/payload-cloud": "^3.43.0",
-    "@payloadcms/plugin-cloud-storage": "3.33.0",
+    "@payloadcms/plugin-cloud-storage": "3.43.0",
     "@payloadcms/richtext-lexical": "^3.43.0",
     "@tailwindcss/cli": "^4.1.10",
     "cloudinary": "^2.7.0",
