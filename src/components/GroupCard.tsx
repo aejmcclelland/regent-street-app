@@ -73,7 +73,7 @@ export default function GroupCard({
 							{subgroups.map((sub) => (
 								<li key={sub.slug}>
 									<Link
-										href={`/whats-on/${basePath}/${sub.slug}`}
+										href={`${basePath}/${sub.slug}`}
 										className='btn btn-soft btn-info'
 										onMouseEnter={() => setHoveredSubgroup(sub)}
 										onMouseLeave={() => setHoveredSubgroup(null)}>
