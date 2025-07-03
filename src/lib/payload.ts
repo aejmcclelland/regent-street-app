@@ -68,7 +68,7 @@ export async function getSingleCollectionItem(
 
 export async function getCollectionContent<T extends Document = Document>(
 	collectionSlug: string,
-	limit: number = 10
+	limit: number
 ): Promise<T[]> {
 	try {
 		console.log('Fetching collection:', collectionSlug);
