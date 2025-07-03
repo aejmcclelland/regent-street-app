@@ -107,12 +107,11 @@ export default async function Sundays() {
 										target='_blank'
 										rel='noopener noreferrer'
 										className='text-lg font-medium flex items-center gap-2 hover:underline'>
-										<MdPlace className='text-3xl text-white' />
-										Regent Street Presbyterian Church, Newtownards
+										<MdPlace className='w-8 h-8 text-white shrink-0' />Regent Street Presbyterian Church, Newtownards
 									</a>
 									<p className='text-lg font-medium flex items-center gap-2'>
 										<span className='pt-1 self-start'>
-											<SlSpeech className='text-3xl text-white' />
+											<SlSpeech className='w-8 h-8 text-white shrink-0' />
 										</span>
 										<span>
 											Visit our{' '}
