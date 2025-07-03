@@ -149,8 +149,8 @@ export default function Navbar() {
 
                     {/* Mobile Menu - Separate from navbar structure */}
                     {isMenuOpen && (
-                        <div className={`lg:hidden absolute top-full left-0 right-0 z-40 p-4 transition-all duration-300 ${isScrolled ? 'bg-base-100/70 backdrop-blur-md' : 'bg-base-100'
-                            }`}>
+                        <div className={`lg:hidden absolute top-full left-0 right-0 z-40 p-4 transition-all duration-300 bg-base-100`
+                            }>
                             {/* Mobile menu content */}
                             <MobileMenu
                                 isOpen={isMenuOpen}
