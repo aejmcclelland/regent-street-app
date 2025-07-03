@@ -26,7 +26,8 @@ const youtubeIcon = {
 // Fetch Sundays content from Payload CMS
 export default async function Sundays() {
 	const sundaysContent = (await getCollectionContent(
-		'sundays'
+		'sundays',
+		10
 	)) as SundaysItem[];
 
 	console.log(
