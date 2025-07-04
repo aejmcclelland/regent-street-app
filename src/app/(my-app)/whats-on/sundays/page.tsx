@@ -62,8 +62,22 @@ export default async function Sundays() {
 										11.00 am – with Rev. Anne Tolland
 									</p>
 									<p className='text-lg'>
-										Children leave the main service after the children&apos;s
-										address for their own age-appropriate programme.
+										Youth and children leave the main service after the
+										children&apos;s address.
+										<p className='mt-2'>
+											Find out more about children{' '}
+											<a
+												href='/whats-on/children'
+												className='font-bold hover:text-primary'>
+												here.
+											</a>
+										</p>
+										Find out more about youth{' '}
+										<a
+											href='/whats-on/youth'
+											className='font-bold hover:text-primary'>
+											here.
+										</a>
 									</p>
 									<h3 className='text-xl font-semibold text-primary'>
 										The Hub
@@ -107,7 +121,8 @@ export default async function Sundays() {
 										target='_blank'
 										rel='noopener noreferrer'
 										className='text-lg font-medium flex items-center gap-2 hover:underline'>
-										<MdPlace className='w-8 h-8 text-white shrink-0' />Regent Street Presbyterian Church, Newtownards
+										<MdPlace className='w-8 h-8 text-white shrink-0' />
+										Regent Street Presbyterian Church, Newtownards
 									</a>
 									<p className='text-lg font-medium flex items-center gap-2'>
 										<span className='pt-1 self-start'>
