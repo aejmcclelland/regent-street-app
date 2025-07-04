@@ -1,6 +1,5 @@
 import Banner from '../../../../components/Banner';
 import { getCollectionContent } from 'lib/payload';
-import { RichText } from '@payloadcms/richtext-lexical/react';
 import { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical';
 import { IoLogoYoutube } from 'react-icons/io5';
 import { MdPlace } from 'react-icons/md';
@@ -52,36 +51,46 @@ export default async function Sundays() {
 					<div className='px-6 py-8 rounded-lg'>
 						<div className='grid md:grid-cols-2 gap-6 items-stretch'>
 							{/* Left Column: Sunday + Livestream */}
-							<div className='flex flex-col justify-between h-full space-y-6 text-gray-700'>
+							<div className='flex flex-col gap-6 text-gray-700 h-full'>
 								{/* Sundays at Regent Street */}
 								<div className='space-y-4 p-4 bg-base-100 rounded-lg shadow-md'>
 									<h3 className='text-3xl font-extrabold text-primary'>
 										Sundays at Regent Street
 									</h3>
+
 									<p className='text-xl font-bold'>
 										11.00 am – with Rev. Anne Tolland
 									</p>
-									<p className='text-lg'>
-										Youth and children leave the main service after the
-										children&apos;s address.
-										<p className='mt-2'>
+
+									<div className='text-lg space-y-2'>
+										<p>
+											Youth and children leave the main service after the
+											children's address.
+										</p>
+										<p>
 											Find out more about children{' '}
 											<a
 												href='/whats-on/children'
 												className='font-bold hover:text-primary'>
-												here.
+												here
 											</a>
+											.
 										</p>
-										Find out more about youth{' '}
-										<a
-											href='/whats-on/youth'
-											className='font-bold hover:text-primary'>
-											here.
-										</a>
-									</p>
+										<p>
+											Find out more about youth{' '}
+											<a
+												href='/whats-on/youth'
+												className='font-bold hover:text-primary'>
+												here
+											</a>
+											.
+										</p>
+									</div>
+
 									<h3 className='text-xl font-semibold text-primary'>
 										The Hub
 									</h3>
+
 									<p className='text-lg'>
 										Everyone is welcome for tea or coffee in The Hub before our
 										Sunday service from 10:15am
@@ -89,7 +98,7 @@ export default async function Sundays() {
 								</div>
 
 								{/* Livestream */}
-								<div className='bg-secondary p-4 rounded-lg space-y-2 text-secondary-content shadow-md h-full'>
+								<div className='bg-secondary p-4 rounded-lg space-y-2 text-secondary-content shadow-md'>
 									<h3 className='text-2xl font-bold'>Livestream</h3>
 									<p>You can join us live each week on our YouTube channel.</p>
 									<IconLink
@@ -102,9 +111,9 @@ export default async function Sundays() {
 							</div>
 
 							{/* Right Column: Image + Find Us */}
-							<div className='flex flex-col justify-between h-full space-y-4'>
+							<div className='flex flex-col gap-5 h-full'>
 								{/* Image */}
-								<div className='w-full h-48 md:h-64 relative'>
+								<div className='w-full max-h-72 md:min-h-84 relative'>
 									<img
 										src='https://res.cloudinary.com/dqeszgo28/image/upload/t_portfolio-projectCard/v1751227341/regentStreetChurch/linkedin-sales-solutions-IjkIOe-2fF4-unsplash_egxwp5.jpg'
 										alt='People chatting happily'
@@ -114,7 +123,7 @@ export default async function Sundays() {
 								</div>
 
 								{/* Find Us */}
-								<div className='bg-accent p-4 rounded-lg text-accent-content shadow-md space-y-2 h-full'>
+								<div className='bg-accent p-4 rounded-lg text-accent-content shadow-md space-y-4'>
 									<h3 className='text-2xl font-bold'>Find Us</h3>
 									<a
 										href='https://maps.app.goo.gl/HCgDiKACQy36ncci6'
