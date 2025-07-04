@@ -68,8 +68,8 @@ export default function GroupCard({
 				<p className='text-gray-600'>{group.description}</p>
 
 				{subgroups.length > 0 && (
-					<div className='card-actions justify-end'>
-						<ul className='menu menu-vertical lg:menu-horizontal bg-base-100 rounded-box'>
+					<div className='card-actions'>
+						<ul className='grid grid-cols-2 sm:grid-cols-2 gap-2 w-full'>
 							{subgroups.map((sub) => (
 								<li key={sub.slug}>
 									<Link
