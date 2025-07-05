@@ -30,7 +30,11 @@ export default function Home() {
 			<Sundays />
 			<Welcome />
 			<About />
-			<FindUs />
+			<section className="bg-primary text-primary-content py-12 px-6 text-center">
+				<div className="container mx-auto max-w-4xl space-y-4">
+				<FindUs />
+			</div>
+			</section>
 		</div>
 	);
 }

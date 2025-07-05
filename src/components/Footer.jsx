@@ -16,13 +16,6 @@ export default function Footer() {
                     </p>
                 </div>
 
-                {/* Service Times */}
-                <div className="flex flex-col items-center text-center lg:items-start lg:text-left w-full">
-                    <h6 className="footer-title text-primary">Service Times</h6>
-                    <p className="text-sm text-gray-400">Sunday Worship - 11:00 AM</p>
-                    <p className="text-sm text-gray-400">Midweek Bible Study - Wednesday 7:30 PM</p>
-                </div>
-
                 {/* Contact Info */}
                 <div className="flex flex-col items-center text-center lg:items-start lg:text-left w-full">
                     <h6 className="footer-title text-primary">Contact Us</h6>
@@ -33,9 +26,9 @@ export default function Footer() {
                     <p className="text-sm text-primary">Phone: 028 9182 2416</p>
                 </div>
 
-                {/* Notices */}
+                {/* Info */}
                 <div className="flex flex-col items-center text-center lg:items-start lg:text-left w-full">
-                    <h6 className="footer-title text-primary">Notices</h6>
+                    <h6 className="footer-title text-primary">Info</h6>
                     <p className="text-sm text-gray-400">
                         Registered with the Charity Commission for Northern Ireland NIC105068.
                     </p>
@@ -52,26 +45,29 @@ export default function Footer() {
                         
                     </a>
                 </div>
-            </div>
 
-            {/* Social Media Icons - Centered for Mobile */}
-            <div className="mt-8 flex justify-center space-x-6">
-                <a
-                    href="https://www.facebook.com/yourpage"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-primary transition"
-                >
-                    <FaFacebookF className="w-6 h-6" />
-                </a>
-                <a
-                    href="https://www.instagram.com/yourprofile"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-primary transition"
-                >
-                    <FaInstagram className="w-6 h-6" />
-                </a>
+                {/* Social Media */}
+                <div className="flex flex-col items-center text-center lg:items-start lg:text-left w-full">
+                    <h6 className="footer-title text-primary">Connect with Us</h6>
+                    <div className="flex space-x-4 mt-2">
+                        <a
+                            href="https://www.facebook.com/yourpage"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-400 hover:text-primary transition"
+                        >
+                            <FaFacebookF className="w-7 h-7" />
+                        </a>
+                        <a
+                            href="https://www.instagram.com/yourprofile"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-400 hover:text-primary transition"
+                        >
+                            <FaInstagram className="w-7 h-7" />
+                        </a>
+                    </div>
+                </div>
             </div>
         </footer>
     );
