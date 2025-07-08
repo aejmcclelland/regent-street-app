@@ -1,5 +1,7 @@
 // This file contains the email addresses that are allowed to access the different sections of the website.
 
+import { ThursdayClub } from '@/collections/ThursdayClub';
+
 export const emailAccessConfig = {
 	firstFriends: [
 		'julietroughton@hotmail.com',
@@ -25,4 +27,6 @@ export const emailAccessConfig = {
 	fieldsOfLife: ['aejmcclelland@gmail.com', 'julietroughton@hotmail.com'],
 	youth: ['aejmcclelland@gmail.com', 'julietroughton@hotmail.com'],
 	organisations: ['aejmcclelland@gmail.com'],
+	thursdayClub: ['aejmcclelland@gmail.com'],
+	overTheWallLadies: ['aejmcclelland@gmail.com', 'julietroughton@hotmail.com'],
 };

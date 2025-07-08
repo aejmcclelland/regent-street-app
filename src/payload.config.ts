@@ -28,6 +28,8 @@ import { Quest } from './collections/Quest';
 import { FieldsOfLife } from './collections/FieldsOfLife';
 import { Organisations } from './collections/Organisations';
 import { StreetPastors } from './collections/StreetPastors';
+import { ThursdayClub } from './collections/ThursdayClub';
+import { OverTheWallLadies } from './collections/OverTheWallLadies';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -79,6 +81,8 @@ export default buildConfig({
 		Squirrels,
 		Organisations,
 		StreetPastors,
+		ThursdayClub,
+		OverTheWallLadies,
 	],
 	editor: lexicalEditor({
 		features: ({ defaultFeatures }) => [...defaultFeatures],
