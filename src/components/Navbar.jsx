@@ -33,18 +33,16 @@ export default function Navbar() {
         { link: "/whats-on/giving", text: "Giving" },
     ];
 
-    const navigationMission = [
-        { link: "/mission/the-link", text: "The Link" },
-        { link: "/mission/fields-of-life", text: "Fields of Life" },
-        { link: "/mission/street-pastors", text: "Street Pastors" },
-    ];
-
     const navigationWhoWeAre = [
         { link: "/who-we-are/values", text: "Our Values" },
         { link: "/who-we-are/team", text: "Our Team" },
         { link: "/who-we-are/our-history", text: "Our History" },
         { link: "/who-we-are/contact", text: "Contact Us" },
 
+    ];
+
+    const navigationMission = [
+        { link: "/mission", text: "Our Mission" }
     ];
 
     const socialLinks = [
@@ -150,14 +148,14 @@ export default function Navbar() {
                     {/* Mobile Menu - Separate from navbar structure */}
                     {isMenuOpen && (
                         <div className={`lg:hidden absolute top-full left-0 right-0 z-40 p-4 transition-all duration-300 bg-base-100`
-                            }>
+                        }>
                             {/* Mobile menu content */}
                             <MobileMenu
                                 isOpen={isMenuOpen}
                                 toggleMenu={toggleMenu}
                                 navigationWhatsOn={navigationWhatsOn}
-                                navigationMission={navigationMission}
                                 navigationWhoWeAre={navigationWhoWeAre}
+                                navigationMission={navigationMission}
                                 isScrolled={isScrolled}
                                 socialLinks={socialLinks}
                             />
