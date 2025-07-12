@@ -2,6 +2,7 @@ import React, { JSX } from 'react';
 import { getCollectionContent } from 'lib/payload';
 import Banner from '@/components/Banner';
 import { groupCardComponents } from '@/components/groupCardComponents';
+import LinkNavbar from '@/components/LinkNavbar';
 
 type LexicalRichTextField = {
 	root: {
@@ -67,52 +68,61 @@ export default async function ChildrenPage(): Promise<JSX.Element> {
 			<Banner
 				publicId='https://res.cloudinary.com/dqeszgo28/image/upload/t_sundays/v1742673268/regentStreetChurch/sunday_school_nw4az0.png'
 				alt="Children's Ministry"
-				title="Children's Ministry"
+				title='Children'
 				textPosition='bottomLeft'
 				fontColour='two'
 			/>
+			<LinkNavbar
+				links={[
+					{ id: 'sunday-school', label: 'Sunday School' },
+					{ id: 'first-friends', label: 'First Friends' },
+					{ id: 'events', label: 'Events' },
+				]}
+			/>
 
 			<section className='py-10'>
-				<div className='container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-6'>
+				<div className='container mx-auto px-4 space-y-10'>
 					{filteredGroups.map((group: Group) => {
-						const Component = (groupCardComponents[group.slug] ||
-							groupCardComponents.default) as React.FC<{
-							group: {
-								name: string;
-								image: { cloudinaryUrl: string; alt?: string };
-								slug: string;
-								subgroups: Subgroup[];
-								description: string;
-							};
-							basePath: string;
-						}>;
-
+						const subgroups = group.linkedPage?.value?.subgroups ?? [];
 						return (
-							<Component
+							<section
 								key={group.id}
-								group={{
-									name: group.name,
-									image: group.image,
-									slug: group.slug,
-									subgroups: group.linkedPage?.value?.subgroups || [],
-									description:
-										typeof group.description === 'object'
-											? extractPlainTextFromLexical(
-													group.description as LexicalRichTextField
-											  )
-											: group.description,
-								}}
-								basePath='/children'
-							/>
+								id={
+									group.slug === 'sundaySchool'
+										? 'sunday-school'
+										: 'first-friends'
+								}
+								className='bg-base-100 p-6 rounded-lg shadow space-y-4'>
+								<h2 className='text-2xl font-bold text-primary'>{group.name}</h2>
+
+								{group.image?.cloudinaryUrl && (
+									<img
+										src={group.image.cloudinaryUrl}
+										alt={group.image.alt || group.name}
+										className='w-full max-w-md rounded shadow'
+									/>
+								)}
+
+								<p className='text-gray-700'>
+									{typeof group.description === 'object'
+										? extractPlainTextFromLexical(
+												group.description as LexicalRichTextField
+										  )
+										: group.description}
+								</p>
+								{subgroups.length > 0 && (
+									<div>
+										<h3 className='text-lg font-semibold mt-4'>Subgroups:</h3>
+										<ul className='list-disc list-inside text-gray-700'>
+											{subgroups.map((sub) => (
+												<li key={sub.slug}>{sub.title}</li>
+											))}
+										</ul>
+									</div>
+								)}
+							</section>
 						);
 					})}
-
-					{filteredGroups.length === 0 && (
-						<p className='text-center text-gray-500'>
-							No children’s groups found.
-						</p>
-					)}
-
 					<div className='bg-base-200 p-6 rounded-lg shadow hover:shadow-lg transition-all'>
 						<h3 className='text-xl font-bold text-primary mb-2'>Events</h3>
 						<p className='text-gray-700 mb-4'>
