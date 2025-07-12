@@ -1,5 +1,6 @@
 import HomeButton from '@/components/HomeButton';
 import Banner from '@/components/Banner';
+import LinkNavbar from '@/components/LinkNavbar';
 
 export default function Mission() {
 	return (
@@ -12,8 +13,17 @@ export default function Mission() {
 				textPosition='bottomLeft' // ✅ Text in bottom left
 				fontColour='two' // ✅ Text in accent color
 			/>
+
+			{/* Navbar Section */}
+			<LinkNavbar
+				links={[
+					{ id: 'the-link', label: 'The Link' },
+					{ id: 'fields-of-life', label: 'Fields of Life' },
+					{ id: 'street-pastors', label: 'Street Pastors' },
+				]}
+			/>
 			<div className='max-w-4xl mx-auto px-6 py-12 space-y-10'>
-				<section className='card bg-base-100 shadow-md'>
+				<section id='the-link' className='card bg-base-100 shadow-md'>
 					<div className='card-body space-y-4'>
 						<h2 className='card-title text-primary'>The Link</h2>
 						<p className='text-lg text-gray-700'>
@@ -30,7 +40,7 @@ export default function Mission() {
 					</div>
 				</section>
 
-				<section className='card bg-base-200 shadow-md'>
+				<section id='fields-of-life' className='card bg-base-200 shadow-md'>
 					<div className='card-body space-y-4'>
 						<h2 className='card-title text-primary'>Fields of Life</h2>
 						<p className='text-lg text-gray-700'>
@@ -51,7 +61,7 @@ export default function Mission() {
 					</div>
 				</section>
 
-				<section className='card bg-base-300 shadow-md'>
+				<section id='street-pastors' className='card bg-base-300 shadow-md'>
 					<div className='card-body space-y-4'>
 						<h2 className='card-title text-primary'>Street Pastors</h2>
 						<p className='text-lg text-gray-700'>
