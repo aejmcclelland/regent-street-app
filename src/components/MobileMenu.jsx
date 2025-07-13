@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-export default function MobileMenu({ isOpen, toggleMenu, navigationWhatsOn, navigationCommunity, navigationWhoWeAre, isScrolled, socialLinks }) {
+export default function MobileMenu({ isOpen, toggleMenu, navigationWhatsOn, navigationMission, isScrolled, socialLinks }) {
     if (!isOpen) return null; // Only render the menu when it's open
 
     // State to track open dropdowns
@@ -72,17 +72,17 @@ export default function MobileMenu({ isOpen, toggleMenu, navigationWhatsOn, navi
                 {/* Community Section */}
                 <li className="w-full">
                     <button
-                        onClick={() => toggleDropdown("community")}
+                        onClick={() => toggleDropdown("mission")}
                         className="font-bold cursor-pointer hover:text-primary w-full flex items-center justify-between"
                     >
-                        Community
-                        <span className={`transition-transform duration-200 ${openDropdown === "community" ? "rotate-180" : "rotate-0"}`}>
+                        Mission
+                        <span className={`transition-transform duration-200 ${openDropdown === "mission" ? "rotate-180" : "rotate-0"}`}>
                             ▼
                         </span>
                     </button>
-                    {openDropdown === "community" && (
+                    {openDropdown === "mission" && (
                         <ul className="space-y-2 pl-4 w-full">
-                            {navigationCommunity.map((nav) => (
+                            {navigationMission.map((nav) => (
                                 <li key={nav.text} className="w-full">
                                     <Link href={nav.link} onClick={closeMenu} className="hover:text-primary w-full block">
                                         {nav.text}
