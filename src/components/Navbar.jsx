@@ -24,6 +24,7 @@ export default function Navbar() {
     }, []);
 
     const navigationWhatsOn = [
+        { link: "/whats-on", text: "Overview" },
         { link: "/whats-on/sundays", text: "Sundays" },
         { link: "/whats-on/children", text: "Children" },
         { link: "/whats-on/youth", text: "Youth" },

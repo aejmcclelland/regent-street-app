@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-export default function MobileMenu({ isOpen, toggleMenu, navigationWhatsOn, navigationMission, isScrolled, socialLinks }) {
+export default function MobileMenu({ isOpen, toggleMenu, navigationWhatsOn, navigationMission, navigationWhoWeAre, isScrolled, socialLinks }) {
     if (!isOpen) return null; // Only render the menu when it's open
 
     // State to track open dropdowns
