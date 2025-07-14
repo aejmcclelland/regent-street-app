@@ -93,7 +93,9 @@ export default async function ChildrenPage(): Promise<JSX.Element> {
 										: 'first-friends'
 								}
 								className='bg-base-100 p-6 rounded-lg shadow space-y-4'>
-								<h2 className='text-2xl font-bold text-primary'>{group.name}</h2>
+								<h2 className='text-2xl font-bold text-primary'>
+									{group.name}
+								</h2>
 
 								{group.image?.cloudinaryUrl && (
 									<img
@@ -123,7 +125,9 @@ export default async function ChildrenPage(): Promise<JSX.Element> {
 							</section>
 						);
 					})}
-					<div className='bg-base-200 p-6 rounded-lg shadow hover:shadow-lg transition-all'>
+					<div
+						id='events'
+						className='bg-base-200 p-6 rounded-lg shadow hover:shadow-lg transition-all'>
 						<h3 className='text-xl font-bold text-primary mb-2'>Events</h3>
 						<p className='text-gray-700 mb-4'>
 							Holiday Bible Club and other children’s events.
